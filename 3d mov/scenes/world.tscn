@@ -1,0 +1,346 @@
+[gd_scene load_steps=35 format=3 uid="uid://hs2fq1v5cnqi"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_sr1k4"]
+[ext_resource type="Texture2D" uid="uid://b71ul0ge0p8ku" path="res://assets/20083.png" id="2_ekg8i"]
+[ext_resource type="Script" path="res://scripts/Interaction.gd" id="2_rpqjg"]
+[ext_resource type="Script" path="res://scripts/vegetable.gd" id="3_vase2"]
+[ext_resource type="Script" path="res://scripts/blue top.gd" id="4_0mchf"]
+[ext_resource type="Script" path="res://scripts/vegmesh.gd" id="5_mj2r3"]
+[ext_resource type="Script" path="res://scenes/serve_top.gd" id="5_nyppg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bkt2t"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ki4tb"]
+sky_material = SubResource("ProceduralSkyMaterial_bkt2t")
+
+[sub_resource type="Environment" id="Environment_esutm"]
+background_mode = 2
+sky = SubResource("Sky_ki4tb")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyvh6"]
+albedo_color = Color(0, 0.129412, 0.682353, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ajdv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w4ary"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsiak"]
+albedo_color = Color(0.0431373, 0.486275, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsrvo"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h23jq"]
+material = SubResource("StandardMaterial3D_gsrvo")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wlxtg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hi5dw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73g21"]
+albedo_color = Color(0.333333, 1, 0.439216, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bls64"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i3sos"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyl3l"]
+albedo_color = Color(0.760784, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0fmq1"]
+material = SubResource("StandardMaterial3D_pyl3l")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_but4i"]
+size = Vector3(1, 0.102866, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yx85u"]
+albedo_color = Color(0.317647, 1, 1, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0iexy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g3t2i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w75ka"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4n16"]
+albedo_color = Color(1, 0.172549, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_68jln"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxifo"]
+albedo_color = Color(1, 1, 0.12549, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqeja"]
+
+[sub_resource type="TextMesh" id="TextMesh_4y2d4"]
+text = "stove"
+font_size = 20
+
+[sub_resource type="TextMesh" id="TextMesh_8sn20"]
+text = "serving bench"
+font_size = 17
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_esutm")
+
+[node name="Ground" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(64, 0.002, 32)
+material = SubResource("StandardMaterial3D_gyvh6")
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_sr1k4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
+mesh = SubResource("CapsuleMesh_5ajdv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("ConvexPolygonShape3D_w4ary")
+
+[node name="Head" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.533806, 0)
+
+[node name="Camera3D" type="Camera3D" parent="player/Head"]
+
+[node name="Interaction" type="RayCast3D" parent="player/Head/Camera3D"]
+target_position = Vector3(0, 0, -5)
+script = ExtResource("2_rpqjg")
+
+[node name="Prompt" type="Label" parent="player/Head/Camera3D/Interaction"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Message
+[Key]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hand" type="Marker3D" parent="player/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.02475)
+
+[node name="TextureRect" type="TextureRect" parent="player/Head/Camera3D"]
+offset_left = 563.0
+offset_top = 304.0
+offset_right = 603.0
+offset_bottom = 344.0
+texture = ExtResource("2_ekg8i")
+expand_mode = 1
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1912, 0, 0)
+material_override = SubResource("StandardMaterial3D_tsiak")
+use_collision = true
+size = Vector3(1, 2, 34)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8088, 0, 0)
+material_override = SubResource("StandardMaterial3D_tsiak")
+use_collision = true
+size = Vector3(1, 2, 34)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0246849, 4.76837e-07, -17.0043)
+material_override = SubResource("StandardMaterial3D_tsiak")
+use_collision = true
+size = Vector3(68, 2, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0246849, 4.76837e-07, 15.9957)
+material_override = SubResource("StandardMaterial3D_tsiak")
+use_collision = true
+size = Vector3(68, 2, 2)
+
+[node name="ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23449, 1.67019, -8.69811)
+metadata/ball = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0679529, 0)
+mesh = SubResource("SphereMesh_h23jq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ball"]
+shape = SubResource("SphereShape3D_wlxtg")
+
+[node name="vegetable" type="RigidBody3D" parent="." groups=["vegetable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999919, 2.00609, -5)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("3_vase2")
+metadata/vegetable = true
+
+[node name="vegmesh" type="MeshInstance3D" parent="vegetable"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0.000549778, 0, -0.000549778, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_hi5dw")
+surface_material_override/0 = SubResource("StandardMaterial3D_73g21")
+script = ExtResource("5_mj2r3")
+
+[node name="burntimer" type="Timer" parent="vegetable/vegmesh"]
+wait_time = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vegetable"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_bls64")
+
+[node name="Timer" type="Timer" parent="vegetable"]
+wait_time = 5.0
+one_shot = true
+
+[node name="red box" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.498674, -3)
+physics_material_override = SubResource("PhysicsMaterial_i3sos")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="red box"]
+mesh = SubResource("BoxMesh_0fmq1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="red box"]
+transform = Transform3D(1, 0, 0, 0, 9.744, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_but4i")
+
+[node name="blue_top" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.498674, -3)
+physics_material_override = SubResource("PhysicsMaterial_i3sos")
+script = ExtResource("4_0mchf")
+metadata/blue_top = true
+
+[node name="Timer" type="Timer" parent="blue_top"]
+wait_time = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="blue_top"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.548522, 0)
+mesh = SubResource("BoxMesh_0fmq1")
+surface_material_override/0 = SubResource("StandardMaterial3D_yx85u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blue_top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549, 0)
+shape = SubResource("BoxShape3D_but4i")
+
+[node name="bench" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bench"]
+mesh = SubResource("BoxMesh_g3t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bench"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="bench2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -5)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bench2"]
+mesh = SubResource("BoxMesh_g3t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bench2"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="bench3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -5)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bench3"]
+mesh = SubResource("BoxMesh_g3t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bench3"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="bench4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -5)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bench4"]
+mesh = SubResource("BoxMesh_g3t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bench4"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="bench5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -4)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bench5"]
+mesh = SubResource("BoxMesh_g3t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bench5"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="bench6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -2)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bench6"]
+mesh = SubResource("BoxMesh_g3t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bench6"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="serving bench" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -3)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="serving bench"]
+mesh = SubResource("BoxMesh_g3t2i")
+surface_material_override/0 = SubResource("StandardMaterial3D_o4n16")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="serving bench"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="serve top" type="StaticBody3D" parent="serving bench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("5_nyppg")
+metadata/serve_top = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="serving bench/serve top"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -0.45, 0)
+mesh = SubResource("BoxMesh_68jln")
+surface_material_override/0 = SubResource("StandardMaterial3D_pxifo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="serving bench/serve top"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -0.45, 0)
+shape = SubResource("BoxShape3D_pqeja")
+
+[node name="bench8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -5)
+physics_material_override = SubResource("PhysicsMaterial_0iexy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bench8"]
+mesh = SubResource("BoxMesh_g3t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bench8"]
+shape = SubResource("BoxShape3D_w75ka")
+
+[node name="stove text" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.29087, 1.1798, -3)
+mesh = SubResource("TextMesh_4y2d4")
+
+[node name="serving bench text" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.42413, 1.21536, -3)
+mesh = SubResource("TextMesh_8sn20")
+
+[connection signal="body_entered" from="vegetable" to="vegetable" method="_on_body_entered"]
+[connection signal="body_entered" from="vegetable" to="vegetable/vegmesh" method="_on_vegetable_body_entered"]
+[connection signal="body_entered" from="vegetable" to="blue_top" method="_on_vegetable_body_entered"]
+[connection signal="body_entered" from="vegetable" to="serving bench/serve top" method="_on_vegetable_body_entered"]
+[connection signal="body_exited" from="vegetable" to="vegetable" method="_on_body_exited"]
+[connection signal="timeout" from="vegetable/vegmesh/burntimer" to="vegetable" method="_on_burntimer_timeout"]
+[connection signal="timeout" from="vegetable/vegmesh/burntimer" to="vegetable/vegmesh" method="_on_burntimer_timeout"]
+[connection signal="timeout" from="vegetable/Timer" to="vegetable" method="_on_timer_timeout"]
+[connection signal="timeout" from="vegetable/Timer" to="vegetable/vegmesh" method="_on_timer_timeout"]
+[connection signal="timeout" from="blue_top/Timer" to="blue_top" method="_on_timer_timeout"]
