@@ -15,20 +15,19 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.has_meta("blue_top"):
 		$Timer.start()
-		print("cooking")
+		print("Cooking!")
 	elif body.has_meta("serve_top"):
-		print("serving")
+		print("Serving!")
 
 func _on_body_exited(body):
 	if body.has_meta("blue_top"):
-		# if the vegetable is not cooked
 		$Timer.stop()
-		print("teste")
-		# if the vegetable is done
-		# print 
-		
+		$burntimer.stop()
+		print("Off the stove.")
+
 func _on_timer_timeout():
-	print("done")
-	# change colour
+	print("Cooked!")
+	$burntimer.start()
 
-
+func _on_burntimer_timeout():
+	print("Burned!")

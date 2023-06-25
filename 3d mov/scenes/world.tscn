@@ -186,17 +186,17 @@ script = ExtResource("3_vase2")
 metadata/vegetable = true
 
 [node name="vegmesh" type="MeshInstance3D" parent="vegetable"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0.000549778, 0, -0.000549778, 0.5, 0, 0, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0, 0, 0)
 mesh = SubResource("BoxMesh_hi5dw")
 surface_material_override/0 = SubResource("StandardMaterial3D_73g21")
 script = ExtResource("5_mj2r3")
 
-[node name="burntimer" type="Timer" parent="vegetable/vegmesh"]
-wait_time = 5.0
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="vegetable"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 shape = SubResource("BoxShape3D_bls64")
+
+[node name="burntimer" type="Timer" parent="vegetable"]
+wait_time = 5.0
 
 [node name="Timer" type="Timer" parent="vegetable"]
 wait_time = 5.0
@@ -339,8 +339,8 @@ mesh = SubResource("TextMesh_8sn20")
 [connection signal="body_entered" from="vegetable" to="blue_top" method="_on_vegetable_body_entered"]
 [connection signal="body_entered" from="vegetable" to="serving bench/serve top" method="_on_vegetable_body_entered"]
 [connection signal="body_exited" from="vegetable" to="vegetable" method="_on_body_exited"]
-[connection signal="timeout" from="vegetable/vegmesh/burntimer" to="vegetable" method="_on_burntimer_timeout"]
-[connection signal="timeout" from="vegetable/vegmesh/burntimer" to="vegetable/vegmesh" method="_on_burntimer_timeout"]
+[connection signal="timeout" from="vegetable/burntimer" to="vegetable" method="_on_burntimer_timeout"]
+[connection signal="timeout" from="vegetable/burntimer" to="vegetable/vegmesh" method="_on_burntimer_timeout"]
 [connection signal="timeout" from="vegetable/Timer" to="vegetable" method="_on_timer_timeout"]
 [connection signal="timeout" from="vegetable/Timer" to="vegetable/vegmesh" method="_on_timer_timeout"]
 [connection signal="timeout" from="blue_top/Timer" to="blue_top" method="_on_timer_timeout"]

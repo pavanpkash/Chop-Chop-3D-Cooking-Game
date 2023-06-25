@@ -8,9 +8,9 @@ func _ready():
 func _process(delta):
 	pass
 
-# func _on_vegetable_body_entered(body):
-	#if body.has_meta("blue_top"):
-		# print("cooking")
+func _on_vegetable_body_entered(body):
+	if body.has_meta("vegetable"):
+		print("baba")
 		# $Timer.start()
 		# print($Timer.time_left)
 		# print($Timer.wait_time)

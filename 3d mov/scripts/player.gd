@@ -19,7 +19,7 @@ const FOV_CHANGE = 1.5
 var gravity = 9.8
 
 var picked_object
-var pull_power = 4	
+var pull_power = 5	
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
