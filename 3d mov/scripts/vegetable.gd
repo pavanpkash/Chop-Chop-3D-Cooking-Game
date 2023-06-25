@@ -31,3 +31,9 @@ func _on_timer_timeout():
 
 func _on_burntimer_timeout():
 	print("Burned!")
+
+
+func _on_area_3d_body_entered(body):
+	if body.has_meta("vegetable"):
+		print("Binned.")
+		queue_free()
