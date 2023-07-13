@@ -1,5 +1,5 @@
 extends RigidBody3D
-#class_name Interactable
+class_name Interactable
 
 var object : MeshInstance3D
 
@@ -12,42 +12,26 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.has_meta("blue_top"):
-		$Timer.start()
+		$chickentimer.start()
 		print("Cooking!")
 	elif body.has_meta("serve_top"):
 		print('Serving!')
-	elif body.has_meta("whole_meat"):
-		print("test")
 	elif body.has_meta("knife"):
-		print("knife cutting vegetable")
-	elif body.has_meta("block_1"):
-		print("block1 vegetable")
-	elif body.has_meta("block_2"):
-		print("block2 vegetable")
+		print("knife cutting chicken")
 
 func _on_body_exited(body):
 	if body.has_meta("blue_top"):
-		$Timer.stop()
-		$burntimer.stop()
+		$chickentimer.stop()
+		$chickenburntimer.stop()
 		print("Off the stove.")
 
 func _on_timer_timeout():
 	print("Cooked!")
-	#set_meta("cooked_vegetable", 1)
-	$burntimer.start()
+	$chickenburntimer.start()
 
 func _on_burntimer_timeout():
 	print("Burned!")
-	#if body.has_meta("cooked_vegetable")
 
 func _on_area_3d_body_entered(body):
-	if body.has_meta("vegetable"):
+	if body.has_meta("chicken"):
 		print("Binned.")
-		spawn_veg_copies()
-		#body.queue_free()
-	
-func spawn_veg_copies():
-	var vegetable = preload("res://scenes/vegetable.tscn")
-	var veg2 = vegetable.instantiate()
-	add_child(veg2)
-	print("respawning vegetable")

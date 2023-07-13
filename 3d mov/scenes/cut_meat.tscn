@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://t3b0exfj8r7k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x411"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3tn5g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ml76s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqvml"]
+albedo_color = Color(0.439216, 0.0156863, 0.0235294, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mmgt0"]
+size = Vector3(0.5, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj3dk"]
+albedo_color = Color(0.439216, 0.0156863, 0.0235294, 1)
+
+[node name="cut_meat" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7x411")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_3tn5g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+mesh = SubResource("BoxMesh_ml76s")
+surface_material_override/0 = SubResource("StandardMaterial3D_qqvml")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+shape = SubResource("BoxShape3D_mmgt0")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_3tn5g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+mesh = SubResource("BoxMesh_ml76s")
+surface_material_override/0 = SubResource("StandardMaterial3D_yj3dk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+shape = SubResource("BoxShape3D_mmgt0")

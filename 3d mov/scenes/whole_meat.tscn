@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjjnmr23cskpn"]
+
+[ext_resource type="Script" path="res://scripts/breakable.gd" id="1_x5r8q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ullat"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oshrg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgj60"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="whole_meat" type="RigidBody3D"]
+script = ExtResource("1_x5r8q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ullat")
+surface_material_override/0 = SubResource("StandardMaterial3D_oshrg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kgj60")

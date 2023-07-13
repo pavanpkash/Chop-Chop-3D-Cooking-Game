@@ -15,3 +15,7 @@ func _process(delta):
 		
 		if detected is Interactable:
 			prompt.text = detected.name
+
+
+func _on_vegetable_body_exited(body):
+	pass # Replace with function body.
