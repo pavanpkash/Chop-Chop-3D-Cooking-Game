@@ -5,7 +5,7 @@ var object : MeshInstance3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_meta("vegetable", 1)
+	set_meta("chicken", 1)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,4 +34,4 @@ func _on_burntimer_timeout():
 
 func _on_area_3d_body_entered(body):
 	if body.has_meta("chicken"):
-		print("Binned.")
+		print("Binned chicken.")

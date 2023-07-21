@@ -17,23 +17,45 @@ const FOV_CHANGE = 1.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
+var camera_x_rotation = 0
 
 var picked_object
 var pull_power = 5	
+var rotation_power = 0.05
+var locked = false
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var interaction = $Head/Camera3D/Interaction
 @onready var hand = $Head/Camera3D/Hand
+@onready var joint = $Head/Camera3D/Generic6DOFJoint3D
+@onready var staticbody = $Head/Camera3D/StaticBody3D
+
+func rotate_head(event):
+	if event is InputEventMouseMotion:
+		if Input.get_mouse_mode() == 2:
+			head.rotate_y(deg_to_rad(-event.relative.x * SENSITIVITY))
+			var x_delta = event.relative.y * SENSITIVITY
+			if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
+				camera.rotate_x(deg_to_rad(-x_delta))
+				camera_x_rotation += x_delta
+
+func rotate_object(event):
+	if picked_object != null:
+		if event is InputEventMouseMotion:
+			staticbody.rotate_x(deg_to_rad(event.relative.y * rotation_power))
+			staticbody.rotate_y(deg_to_rad(event.relative.x * rotation_power))
 
 func pick_object():
 	var collider = interaction.get_collider()
 	if collider != null and collider is RigidBody3D:
 		picked_object = collider
+		joint.set_node_b(picked_object.get_path())
 
 func remove_object():
 	if picked_object != null:
 		picked_object = null 
+		joint.set_node_b(joint.get_path())
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -97,8 +119,18 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _input(event):
+	
+	if !locked:
+		rotate_head(event)
+	
 	if Input.is_action_just_pressed("lclick"):
 		if picked_object == null:
 			pick_object()
 		elif picked_object != null: 
 			remove_object()
+		
+	if Input.is_action_pressed("rclick"):
+		locked = true
+		rotate_object(event)
+	if Input.is_action_just_released("rclick"):
+		locked = false

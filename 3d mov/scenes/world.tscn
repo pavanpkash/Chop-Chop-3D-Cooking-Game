@@ -1,19 +1,21 @@
-[gd_scene load_steps=61 format=3 uid="uid://cp1wc8to81mxf"]
+[gd_scene load_steps=64 format=3 uid="uid://cp1wc8to81mxf"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_15v71"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_sr1k4"]
 [ext_resource type="Texture2D" uid="uid://b71ul0ge0p8ku" path="res://assets/20083.png" id="2_ekg8i"]
 [ext_resource type="Script" path="res://scripts/Interaction.gd" id="2_rpqjg"]
-[ext_resource type="PackedScene" uid="uid://ccrybbpdbimyg" path="res://scenes/vegetable.tscn" id="4_ic165"]
 [ext_resource type="Script" path="res://scripts/knife.gd" id="4_m6s0o"]
+[ext_resource type="Script" path="res://scripts/blue_top.gd" id="5_8gc86"]
+[ext_resource type="Script" path="res://scripts/bluetoparea.gd" id="6_0ltyo"]
 [ext_resource type="Script" path="res://scripts/serve_top.gd" id="6_55jq1"]
-[ext_resource type="Script" path="res://scripts/vegetable.gd" id="6_kb5h5"]
 [ext_resource type="PackedScene" uid="uid://bgpk51ykrt2v6" path="res://scenes/chicken.tscn" id="7_fce8p"]
 [ext_resource type="PackedScene" uid="uid://cjjnmr23cskpn" path="res://scenes/whole_meat.tscn" id="7_uitew"]
+[ext_resource type="PackedScene" uid="uid://ccrybbpdbimyg" path="res://scenes/vegetable.tscn" id="8_15srk"]
 [ext_resource type="PackedScene" uid="uid://t3b0exfj8r7k" path="res://scenes/cut_meat.tscn" id="8_lylmq"]
 [ext_resource type="Script" path="res://scripts/cut_meat.gd" id="10_k78p8"]
 [ext_resource type="Script" path="res://scripts/block1.gd" id="11_tfyn0"]
 [ext_resource type="Script" path="res://scripts/block2.gd" id="12_dmt1v"]
+[ext_resource type="PackedScene" uid="uid://cub1r17sfab70" path="res://scenes/cut_vegetable.tscn" id="13_cncdj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bkt2t"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -61,6 +63,9 @@ size = Vector3(1, 0.102866, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yx85u"]
 albedo_color = Color(0.317647, 1, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ai5ew"]
+size = Vector3(1, 0.1, 1)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0iexy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g3t2i"]
@@ -100,6 +105,7 @@ albedo_color = Color(1, 0.172549, 1, 1)
 albedo_color = Color(1, 1, 0.12549, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pqeja"]
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_8sn20"]
 text = "serving bench"
@@ -209,8 +215,16 @@ grow_vertical = 2
 texture = ExtResource("2_ekg8i")
 expand_mode = 1
 
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="player/Head/Camera3D"]
+node_a = NodePath("../StaticBody3D")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="player/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0251)
+
 [node name="walls" type="Node3D" parent="."]
-visible = false
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1912, 0, 0)
@@ -261,6 +275,7 @@ shape = SubResource("BoxShape3D_but4i")
 [node name="blue_top" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.498674, -3)
 physics_material_override = SubResource("PhysicsMaterial_i3sos")
+script = ExtResource("5_8gc86")
 metadata/blue_top = true
 
 [node name="Timer" type="Timer" parent="blue_top"]
@@ -275,10 +290,24 @@ surface_material_override/0 = SubResource("StandardMaterial3D_yx85u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549, 0)
 shape = SubResource("BoxShape3D_but4i")
 
-[node name="vegetable" parent="." instance=ExtResource("4_ic165")]
-script = ExtResource("6_kb5h5")
+[node name="bluetoparea" type="Area3D" parent="blue_top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600058, 0)
+script = ExtResource("6_0ltyo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blue_top/bluetoparea"]
+shape = SubResource("BoxShape3D_ai5ew")
+
+[node name="vegetable" parent="." instance=ExtResource("8_15srk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.507887)
+
+[node name="vegetable2" parent="." instance=ExtResource("8_15srk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.84471)
+
+[node name="vegetable3" parent="." instance=ExtResource("8_15srk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1.1917)
 
 [node name="chicken" parent="." instance=ExtResource("7_fce8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.175089)
 
 [node name="benches" type="Node3D" parent="."]
 
@@ -464,7 +493,7 @@ mesh = SubResource("BoxMesh_68jln")
 surface_material_override/0 = SubResource("StandardMaterial3D_pxifo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="serving bench/serve top"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -0.45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
 shape = SubResource("BoxShape3D_pqeja")
 
 [node name="serving bench text" type="MeshInstance3D" parent="serving bench"]
@@ -559,6 +588,9 @@ contact_monitor = true
 script = ExtResource("10_k78p8")
 metadata/cut_meat = true
 
+[node name="cut_vegetable" parent="." instance=ExtResource("13_cncdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 0.294665, 0.665548)
+
 [node name="block1" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -4.14342)
 script = ExtResource("11_tfyn0")
@@ -571,7 +603,7 @@ mesh = SubResource("BoxMesh_kaqtp")
 shape = SubResource("BoxShape3D_jvbpv")
 
 [node name="block2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, -0.164235)
 contact_monitor = true
 script = ExtResource("12_dmt1v")
 metadata/block_2 = true
@@ -585,8 +617,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_55362")
 shape = SubResource("BoxShape3D_b1sha")
 
 [connection signal="timeout" from="blue_top/Timer" to="blue_top" method="_on_timer_timeout"]
-[connection signal="body_entered" from="vegetable" to="blue_top" method="_on_vegetable_body_entered"]
-[connection signal="body_entered" from="bin/Area3D" to="vegetable" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="blue_top/Timer" to="blue_top/bluetoparea" method="_on_timer_timeout"]
+[connection signal="body_entered" from="blue_top/bluetoparea" to="blue_top/bluetoparea" method="_on_body_entered"]
 [connection signal="body_entered" from="bin/Area3D" to="chicken" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="bin/Area3D" to="bin/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="knife" to="knife" method="_on_body_entered"]

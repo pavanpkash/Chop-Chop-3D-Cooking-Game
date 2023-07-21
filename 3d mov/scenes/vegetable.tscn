@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccrybbpdbimyg"]
+[gd_scene load_steps=6 format=3 uid="uid://ccrybbpdbimyg"]
 
+[ext_resource type="Script" path="res://scripts/vegetable.gd" id="1_dve2c"]
 [ext_resource type="Script" path="res://scripts/vegmesh.gd" id="2_i4reh"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_rupim"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6oadm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yb5fm"]
+resource_local_to_scene = true
 albedo_color = Color(0.333333, 1, 0.439216, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rupim"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_yb5fm")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3j6dm"]
 
@@ -13,12 +17,12 @@ albedo_color = Color(0.333333, 1, 0.439216, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1)
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("1_dve2c")
 metadata/vegetable = true
 
 [node name="vegmesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0, 0, 0)
 mesh = SubResource("BoxMesh_rupim")
-surface_material_override/0 = SubResource("StandardMaterial3D_6oadm")
 script = ExtResource("2_i4reh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
