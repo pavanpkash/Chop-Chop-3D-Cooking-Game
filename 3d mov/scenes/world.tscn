@@ -1,8 +1,9 @@
-[gd_scene load_steps=64 format=3 uid="uid://cp1wc8to81mxf"]
+[gd_scene load_steps=72 format=3 uid="uid://cp1wc8to81mxf"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_15v71"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_sr1k4"]
 [ext_resource type="Texture2D" uid="uid://b71ul0ge0p8ku" path="res://assets/20083.png" id="2_ekg8i"]
+[ext_resource type="PackedScene" uid="uid://8bdsov863ak7" path="res://scenes/barrel_2.tscn" id="2_mduen"]
 [ext_resource type="Script" path="res://scripts/Interaction.gd" id="2_rpqjg"]
 [ext_resource type="Script" path="res://scripts/knife.gd" id="4_m6s0o"]
 [ext_resource type="Script" path="res://scripts/blue_top.gd" id="5_8gc86"]
@@ -16,6 +17,7 @@
 [ext_resource type="Script" path="res://scripts/block1.gd" id="11_tfyn0"]
 [ext_resource type="Script" path="res://scripts/block2.gd" id="12_dmt1v"]
 [ext_resource type="PackedScene" uid="uid://cub1r17sfab70" path="res://scenes/cut_vegetable.tscn" id="13_cncdj"]
+[ext_resource type="Script" path="res://scripts/Counter.gd" id="18_u05ul"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bkt2t"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -107,9 +109,22 @@ albedo_color = Color(1, 1, 0.12549, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pqeja"]
 size = Vector3(1, 0.1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5q27f"]
+size = Vector3(1, 0.1, 1)
+
 [sub_resource type="TextMesh" id="TextMesh_8sn20"]
 text = "serving bench"
 font_size = 17
+
+[sub_resource type="TextMesh" id="TextMesh_4mwb7"]
+text = "recipe:
+2 cooked vegetables
+1 cooked chicken
+1 cut vegetable"
+font_size = 17
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aus1r"]
+albedo_color = Color(1, 1, 0.309804, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_4y2d4"]
 text = "stove"
@@ -149,6 +164,15 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b1sha"]
 size = Vector3(0.25, 0.25, 0.25)
 
+[sub_resource type="LabelSettings" id="LabelSettings_gr4h5"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mxfw"]
+font_size = 29
+
+[sub_resource type="LabelSettings" id="LabelSettings_1b7xd"]
+font_size = 42
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_15v71")
 
@@ -163,6 +187,9 @@ environment = SubResource("Environment_esutm")
 use_collision = true
 size = Vector3(64, 0.002, 32)
 material = SubResource("StandardMaterial3D_gyvh6")
+
+[node name="barrel2" parent="." instance=ExtResource("2_mduen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53434, 0.769984, 2.79575)
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -228,6 +255,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0251)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1912, 0, 0)
+material_override = SubResource("StandardMaterial3D_tsiak")
+use_collision = true
+size = Vector3(1, 6, 34)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03641, 0, 0)
 material_override = SubResource("StandardMaterial3D_tsiak")
 use_collision = true
 size = Vector3(1, 6, 34)
@@ -308,6 +341,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1.1917)
 
 [node name="chicken" parent="." instance=ExtResource("7_fce8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.175089)
+
+[node name="chicken2" parent="." instance=ExtResource("7_fce8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 0.271915, 0.175089)
 
 [node name="benches" type="Node3D" parent="."]
 
@@ -496,10 +532,22 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pxifo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
 shape = SubResource("BoxShape3D_pqeja")
 
+[node name="Area3D" type="Area3D" parent="serving bench/serve top"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="serving bench/serve top/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.447954, 0)
+shape = SubResource("BoxShape3D_5q27f")
+
 [node name="serving bench text" type="MeshInstance3D" parent="serving bench"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.42413, 0.71536, 0)
 mesh = SubResource("TextMesh_8sn20")
 skeleton = NodePath("../..")
+
+[node name="serving bench text2" type="MeshInstance3D" parent="serving bench"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.42413, 1.65065, 0)
+mesh = SubResource("TextMesh_4mwb7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_aus1r")
 
 [node name="bench8" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -5)
@@ -579,11 +627,13 @@ shape = SubResource("BoxShape3D_imt73")
 
 [node name="whole_meat" parent="." instance=ExtResource("7_uitew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -1)
+visible = false
 contact_monitor = true
 metadata/whole_meat = true
 
 [node name="cut_meat" parent="." instance=ExtResource("8_lylmq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -2)
+visible = false
 contact_monitor = true
 script = ExtResource("10_k78p8")
 metadata/cut_meat = true
@@ -593,6 +643,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 0.294665, 0.665548)
 
 [node name="block1" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -4.14342)
+visible = false
 script = ExtResource("11_tfyn0")
 metadata/block_1 = true
 
@@ -616,11 +667,43 @@ surface_material_override/0 = SubResource("StandardMaterial3D_55362")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="block2"]
 shape = SubResource("BoxShape3D_b1sha")
 
+[node name="HUD_Score" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="HUD_Score"]
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 148.0
+offset_bottom = 79.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_gr4h5")
+
+[node name="Score2" type="Label" parent="HUD_Score"]
+offset_left = 720.0
+offset_top = 13.0
+offset_right = 1129.0
+offset_bottom = 257.0
+text = "Recipe:
+2 cooked vegetables
+1 cooked chicken
+1 cut vegetable"
+label_settings = SubResource("LabelSettings_7mxfw")
+horizontal_alignment = 2
+
+[node name="Counter" type="Label" parent="HUD_Score"]
+offset_left = 158.0
+offset_top = 17.0
+offset_right = 198.0
+offset_bottom = 78.0
+text = "a"
+label_settings = SubResource("LabelSettings_1b7xd")
+script = ExtResource("18_u05ul")
+
 [connection signal="timeout" from="blue_top/Timer" to="blue_top" method="_on_timer_timeout"]
 [connection signal="timeout" from="blue_top/Timer" to="blue_top/bluetoparea" method="_on_timer_timeout"]
 [connection signal="body_entered" from="blue_top/bluetoparea" to="blue_top/bluetoparea" method="_on_body_entered"]
 [connection signal="body_entered" from="bin/Area3D" to="chicken" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="bin/Area3D" to="bin/Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="serving bench/serve top/Area3D" to="serving bench/serve top" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="knife" to="knife" method="_on_body_entered"]
 [connection signal="body_entered" from="knife" to="whole_meat" method="_on_knife_body_entered"]
 [connection signal="body_entered" from="whole_meat" to="knife" method="_on_whole_meat_body_entered"]
