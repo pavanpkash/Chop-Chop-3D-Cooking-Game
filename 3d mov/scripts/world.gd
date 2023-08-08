@@ -7,4 +7,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+#	var hand = get_node("hand")
+#	var hand_position = hand.global_translation
+#	print(hand_position)
 	pass

@@ -21,7 +21,7 @@ var camera_x_rotation = 0
 
 var picked_object
 var pull_power = 5	
-var rotation_power = 0.05
+var rotation_power = 0.5
 var locked = false
 
 @onready var head = $Head
@@ -119,9 +119,8 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _input(event):
-	
-	if !locked:
-		rotate_head(event)
+#	if !locked:
+	rotate_head(event)
 	
 	if Input.is_action_just_pressed("lclick"):
 		if picked_object == null:

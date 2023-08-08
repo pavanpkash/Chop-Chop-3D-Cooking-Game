@@ -1,7 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cub1r17sfab70"]
-
-[ext_resource type="Script" path="res://scripts/vegetable.gd" id="1_qxn5n"]
-[ext_resource type="Script" path="res://scripts/vegmesh.gd" id="2_g7k6h"]
+[gd_scene load_steps=5 format=3 uid="uid://cub1r17sfab70"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eyjfu"]
 size = Vector3(0.25, 0.25, 0.25)
@@ -18,7 +15,6 @@ size = Vector3(0.125, 0.25, 0.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.665548)
 max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource("1_qxn5n")
 metadata/vegetable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -32,7 +28,6 @@ transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25
 mesh = SubResource("BoxMesh_rupim")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6oadm")
-script = ExtResource("2_g7k6h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("BoxShape3D_yjh73")
@@ -44,7 +39,6 @@ transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25
 mesh = SubResource("BoxMesh_rupim")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6oadm")
-script = ExtResource("2_g7k6h")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)

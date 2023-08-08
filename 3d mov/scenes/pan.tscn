@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://demdr0xs1m8in"]
+
+[ext_resource type="PackedScene" uid="uid://bno1hdgdw5av0" path="res://assets/pan_cast_iron_skillet.glb" id="1_t71ga"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xei83"]
+size = Vector3(0.704, 0.296913, 0.969)
+
+[node name="pan" type="RigidBody3D"]
+
+[node name="pan_cast_iron_skillet" parent="." instance=ExtResource("1_t71ga")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11067, -0.220971)
+shape = SubResource("BoxShape3D_xei83")

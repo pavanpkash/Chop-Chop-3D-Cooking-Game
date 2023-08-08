@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccrybbpdbimyg"]
 
-[ext_resource type="Script" path="res://scripts/vegetable.gd" id="1_jv6du"]
+[ext_resource type="Script" path="res://scripts/vegetable.gd" id="1_bi0lq"]
 [ext_resource type="Script" path="res://scripts/vegmesh.gd" id="2_i4reh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yb5fm"]
@@ -17,7 +17,7 @@ material = SubResource("StandardMaterial3D_yb5fm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1)
 max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource("1_jv6du")
+script = ExtResource("1_bi0lq")
 metadata/vegetable = true
 
 [node name="vegmesh" type="MeshInstance3D" parent="."]
@@ -44,6 +44,8 @@ offset_right = 622.0
 offset_bottom = 224.0
 
 [node name="spawntimer" type="Timer" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="vegmesh" method="_on_vegetable_body_entered"]

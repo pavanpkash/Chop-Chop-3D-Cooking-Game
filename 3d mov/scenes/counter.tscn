@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds8h7rysoy7k0"]
+
+[ext_resource type="PackedScene" uid="uid://ci4ivw6wndpw2" path="res://assets/counter_counter.glb" id="1_bgkaj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fahi"]
+size = Vector3(0.987, 1.14799, 1.02)
+
+[node name="counter" type="StaticBody3D"]
+
+[node name="counter_counter" parent="." instance=ExtResource("1_bgkaj")]
+transform = Transform3D(0.016, 0, 0, 0, 0.015, 0, 0, 0, 0.014, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062, 0)
+shape = SubResource("BoxShape3D_1fahi")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://8b8n6cw25ud0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eyjfu"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6pqg"]
+albedo_color = Color(1, 0.756863, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3dnhv"]
+material = SubResource("StandardMaterial3D_p6pqg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjh73"]
+size = Vector3(0.125, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dufi7"]
+albedo_color = Color(1, 0.756863, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cj2t7"]
+material = SubResource("StandardMaterial3D_dufi7")
+
+[node name="cut_chicken" type="RigidBody3D" groups=["vegetable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.665548)
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.063, 0, 0)
+shape = SubResource("BoxShape3D_eyjfu")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+
+[node name="half1" type="MeshInstance3D" parent="RigidBody3D2"]
+transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0, 0, 0)
+mesh = SubResource("BoxMesh_3dnhv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_yjh73")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="half2" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0.125, 0, 0)
+mesh = SubResource("BoxMesh_cj2t7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)
+shape = SubResource("BoxShape3D_yjh73")
+
+[node name="burntimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="timeremaining" type="Label" parent="."]
+offset_left = 529.0
+offset_top = 198.0
+offset_right = 622.0
+offset_bottom = 224.0
+
+[node name="spawntimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="." to="RigidBody3D2/half1" method="_on_vegetable_body_entered" flags=18]
+[connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]
+[connection signal="timeout" from="burntimer" to="." method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="burntimer" to="RigidBody3D2/half1" method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="Timer" to="RigidBody3D2/half1" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout" flags=18]

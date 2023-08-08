@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://drq1h1s841jf5"]
+
+[ext_resource type="PackedScene" uid="uid://cs5cqy38r08m0" path="res://assets/appliance_oven.glb" id="1_dxanh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njgt6"]
+
+[node name="oven2" type="StaticBody3D"]
+
+[node name="appliance_oven" parent="." instance=ExtResource("1_dxanh")]
+transform = Transform3D(0.09, 0, 0, 0, 0.091, 0, 0, 0, 0.088, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00663495, -0.0294413, 0.0319966)
+shape = SubResource("BoxShape3D_njgt6")

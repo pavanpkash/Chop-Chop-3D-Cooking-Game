@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dldy2imd3gi3f"]
+
+[ext_resource type="PackedScene" uid="uid://cveoyuyur13sw" path="res://assets/appliance_refrigerator.glb" id="1_mrw7t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y00ul"]
+size = Vector3(1.17938, 3.34298, 1.20422)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="appliance_refrigerator" parent="." instance=ExtResource("1_mrw7t")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y00ul")

@@ -38,6 +38,11 @@ func _on_body_entered(body):
 		print("test")
 	elif body.has_meta("knife"):
 		print("knife cutting chicken")
+		var cut_chicken = load("res://scenes/cut_chicken.tscn")
+		var chicken3 = cut_chicken.instantiate()
+		var chickenposition = position
+		chicken3.global_position = chickenposition
+		add_sibling(chicken3)
 		queue_free()
 
 func _on_body_exited(body):
