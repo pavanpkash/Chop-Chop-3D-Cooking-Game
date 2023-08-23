@@ -65,6 +65,8 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(60))
+	if event.is_action_pressed("ui_cancel"):
+		$PauseMenu4.pause()
 
 func _physics_process(delta):
 	# Add the gravity.

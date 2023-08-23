@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cp1wc8to81mxf"]
+[gd_scene load_steps=77 format=3 uid="uid://cp1wc8to81mxf"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_15v71"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_sr1k4"]
@@ -9,11 +9,12 @@
 [ext_resource type="Script" path="res://scripts/bluetoparea.gd" id="6_0ltyo"]
 [ext_resource type="Script" path="res://scripts/serve_top.gd" id="6_55jq1"]
 [ext_resource type="PackedScene" uid="uid://bgpk51ykrt2v6" path="res://scenes/chicken.tscn" id="7_fce8p"]
+[ext_resource type="PackedScene" uid="uid://mjjcpapcy43s" path="res://scenes/cutveg_2.tscn" id="8_1im7l"]
 [ext_resource type="PackedScene" uid="uid://ccrybbpdbimyg" path="res://scenes/vegetable.tscn" id="8_15srk"]
+[ext_resource type="PackedScene" uid="uid://by6t38kie26id" path="res://scenes/newrawchicken.tscn" id="8_s06eo"]
 [ext_resource type="Script" path="res://scripts/binarea3d.gd" id="9_4q4jd"]
 [ext_resource type="PackedScene" uid="uid://drq1h1s841jf5" path="res://scenes/oven_2.tscn" id="10_moyu6"]
 [ext_resource type="PackedScene" uid="uid://demdr0xs1m8in" path="res://scenes/pan.tscn" id="13_374jn"]
-[ext_resource type="PackedScene" uid="uid://cub1r17sfab70" path="res://scenes/cut_vegetable.tscn" id="13_cncdj"]
 [ext_resource type="PackedScene" uid="uid://ds8h7rysoy7k0" path="res://scenes/counter.tscn" id="16_jalok"]
 [ext_resource type="Texture2D" uid="uid://biwa7jmrg16lr" path="res://assets/textures/laminate_floor_02_nor_gl_4k.png" id="17_3jnjl"]
 [ext_resource type="PackedScene" uid="uid://c06n086ptjh6j" path="res://scenes/knife.tscn" id="17_qmu23"]
@@ -22,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/Counter.gd" id="18_u05ul"]
 [ext_resource type="Script" path="res://scripts/1_Cooked_Chicken.gd" id="19_b5jur"]
 [ext_resource type="Texture2D" uid="uid://bf610qf0m1f8o" path="res://assets/textures/laminate_floor_02_diff_4k.png" id="20_eoml0"]
+[ext_resource type="Script" path="res://scripts/1_cut_vegetable.gd" id="20_ldl7e"]
 [ext_resource type="PackedScene" uid="uid://dldy2imd3gi3f" path="res://scenes/fridge.tscn" id="22_2ar1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bkt2t"]
@@ -303,8 +305,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.507887)
 [node name="vegetable2" parent="." instance=ExtResource("8_15srk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.84471)
 
+[node name="rawchick" parent="." instance=ExtResource("8_s06eo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0.306738, 2)
+metadata/raw_chicken = false
+
 [node name="vegetable3" parent="." instance=ExtResource("8_15srk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1.1917)
+
+[node name="cutveg2" parent="." instance=ExtResource("8_1im7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 0.312072, 0.665548)
+
+[node name="cutveg3" parent="." instance=ExtResource("8_1im7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 0.31632, 1.12301)
 
 [node name="chicken" parent="." instance=ExtResource("7_fce8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.175089)
@@ -528,7 +540,7 @@ mesh = SubResource("BoxMesh_g3t2i")
 shape = SubResource("BoxShape3D_w75ka")
 
 [node name="knife" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.756052, 1.12089, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75605, 1.12089, -5)
 contact_monitor = true
 script = ExtResource("4_m6s0o")
 metadata/knife = true
@@ -540,9 +552,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1im12")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="knife"]
 shape = SubResource("BoxShape3D_imt73")
-
-[node name="cut_vegetable" parent="." instance=ExtResource("13_cncdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 0.294665, 0.665548)
 
 [node name="new_knife" parent="." instance=ExtResource("17_qmu23")]
 transform = Transform3D(-0.00118677, 0.0372192, 0.999306, -0.999999, -4.41707e-05, -0.00118595, 0, -0.999307, 0.0372192, -0.19362, 1.0879, -4.92943)
@@ -649,6 +658,7 @@ offset_bottom = 385.0
 text = "1 Cut Vegetable"
 label_settings = SubResource("LabelSettings_msonq")
 horizontal_alignment = 2
+script = ExtResource("20_ldl7e")
 
 [node name="Counter" type="Label" parent="HUD_Score"]
 offset_left = 158.0
@@ -707,6 +717,8 @@ visible = false
 [connection signal="kfc" from="serving bench/serve top" to="HUD_Score/Counter" method="_on_serve_top_kfc"]
 [connection signal="sig_cooked_vegetable_served" from="serving bench/serve top" to="HUD_Score/1 Cooked Vegetable" method="_on_serve_top_sig_cooked_vegetable_served"]
 [connection signal="sig_cooked_vegetable_served" from="serving bench/serve top" to="HUD_Score/Counter" method="_on_serve_top_sig_cooked_vegetable_served"]
+[connection signal="sig_cut_vegetable_served" from="serving bench/serve top" to="HUD_Score/1 Cut Vegetable" method="_on_serve_top_sig_cut_vegetable_served"]
+[connection signal="sig_cut_vegetable_served" from="serving bench/serve top" to="HUD_Score/Counter" method="_on_serve_top_sig_cut_vegetable_served"]
 [connection signal="body_entered" from="serving bench/serve top/Area3D" to="serving bench/serve top" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="serving bench/serve top/Area3D" to="serving bench/serve top" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="knife" to="knife" method="_on_body_entered"]

@@ -15,3 +15,7 @@ func _on_serve_top_kfc():
 func _on_serve_top_sig_cooked_vegetable_served():
 	points += 1
 	_ready()
+
+func _on_serve_top_sig_cut_vegetable_served():
+	points +=1
+	_ready()

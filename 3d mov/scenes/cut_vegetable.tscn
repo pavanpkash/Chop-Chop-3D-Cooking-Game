@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cub1r17sfab70"]
+[gd_scene load_steps=6 format=3 uid="uid://cub1r17sfab70"]
+
+[ext_resource type="Script" path="res://scripts/veghalf1.gd" id="1_jsyvr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eyjfu"]
 size = Vector3(0.25, 0.25, 0.25)
@@ -15,32 +17,38 @@ size = Vector3(0.125, 0.25, 0.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.665548)
 max_contacts_reported = 1
 contact_monitor = true
-metadata/vegetable = false
+metadata/vegetable = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.063, 0, 0)
 shape = SubResource("BoxShape3D_eyjfu")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+[node name="veghalf1" type="RigidBody3D" parent="."]
+contact_monitor = true
+script = ExtResource("1_jsyvr")
+metadata/cut_vegetable = true
 
-[node name="half1" type="MeshInstance3D" parent="RigidBody3D2"]
+[node name="half1" type="MeshInstance3D" parent="veghalf1"]
 transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0, 0, 0)
 mesh = SubResource("BoxMesh_rupim")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6oadm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="veghalf1"]
 shape = SubResource("BoxShape3D_yjh73")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="veghalf2" type="RigidBody3D" parent="."]
+contact_monitor = true
+script = ExtResource("1_jsyvr")
+metadata/cut_vegetable = true
 
-[node name="half2" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="half2" type="MeshInstance3D" parent="veghalf2"]
 transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0.125, 0, 0)
 mesh = SubResource("BoxMesh_rupim")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_6oadm")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="veghalf2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)
 shape = SubResource("BoxShape3D_yjh73")
 
@@ -60,10 +68,14 @@ offset_bottom = 224.0
 [node name="spawntimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="." to="RigidBody3D2/half1" method="_on_vegetable_body_entered" flags=18]
+[connection signal="body_entered" from="." to="veghalf1/half1" method="_on_vegetable_body_entered" flags=18]
 [connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="veghalf1" to="veghalf1" method="_on_body_entered"]
+[connection signal="body_exited" from="veghalf1" to="veghalf1" method="_on_body_exited"]
 [connection signal="timeout" from="burntimer" to="." method="_on_burntimer_timeout" flags=18]
-[connection signal="timeout" from="burntimer" to="RigidBody3D2/half1" method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="burntimer" to="veghalf1" method="_on_burntimer_timeout"]
+[connection signal="timeout" from="burntimer" to="veghalf1/half1" method="_on_burntimer_timeout" flags=18]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
-[connection signal="timeout" from="Timer" to="RigidBody3D2/half1" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="Timer" to="veghalf1" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="veghalf1/half1" method="_on_timer_timeout" flags=18]
 [connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout" flags=18]

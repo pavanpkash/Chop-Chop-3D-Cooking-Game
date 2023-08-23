@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://mjjcpapcy43s"]
+
+[ext_resource type="Script" path="res://scripts/veghalf1.gd" id="1_lni8h"]
+[ext_resource type="Script" path="res://scripts/veghalf2.gd" id="2_fk22b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flb45"]
+resource_local_to_scene = true
+albedo_color = Color(0.333333, 1, 0.439216, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8h6mp"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_flb45")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjh73"]
+size = Vector3(0.125, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oom7p"]
+resource_local_to_scene = true
+albedo_color = Color(0.333333, 1, 0.439216, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rhc8m"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_oom7p")
+
+[node name="cutveg2" type="Node3D" groups=["vegetable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 0.665548)
+metadata/vegetable = true
+
+[node name="veghalf1" type="RigidBody3D" parent="."]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_lni8h")
+metadata/cut_vegetable = true
+
+[node name="half1" type="MeshInstance3D" parent="veghalf1"]
+transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0, 0, 0)
+mesh = SubResource("BoxMesh_8h6mp")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="veghalf1"]
+shape = SubResource("BoxShape3D_yjh73")
+
+[node name="timerhalf" type="Timer" parent="veghalf1"]
+wait_time = 5.0
+one_shot = true
+
+[node name="burntimerhalf" type="Timer" parent="veghalf1"]
+wait_time = 5.0
+
+[node name="veghalf2" type="RigidBody3D" parent="."]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_fk22b")
+metadata/cut_vegetable = true
+
+[node name="half2" type="MeshInstance3D" parent="veghalf2"]
+transform = Transform3D(0.125, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0.125, 0, 0)
+mesh = SubResource("BoxMesh_rhc8m")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="veghalf2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)
+shape = SubResource("BoxShape3D_yjh73")
+
+[node name="timerhalf2" type="Timer" parent="veghalf2"]
+wait_time = 5.0
+one_shot = true
+
+[node name="burntimerhalf2" type="Timer" parent="veghalf2"]
+wait_time = 5.0
+
+[node name="timeremaining" type="Label" parent="."]
+offset_left = 529.0
+offset_top = 198.0
+offset_right = 622.0
+offset_bottom = 224.0
+
+[node name="spawntimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="veghalf1" to="veghalf1" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="veghalf1" to="veghalf1" method="_on_body_exited" flags=18]
+[connection signal="timeout" from="veghalf1/timerhalf" to="." method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="veghalf1/timerhalf" to="veghalf1" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="veghalf1/timerhalf" to="veghalf1" method="_on_timerhalf_timeout"]
+[connection signal="timeout" from="veghalf1/timerhalf" to="veghalf1/half1" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="veghalf1/burntimerhalf" to="." method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="veghalf1/burntimerhalf" to="veghalf1" method="_on_burntimerhalf_timeout"]
+[connection signal="timeout" from="veghalf1/burntimerhalf" to="veghalf1" method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="veghalf1/burntimerhalf" to="veghalf1/half1" method="_on_burntimer_timeout" flags=18]
+[connection signal="body_entered" from="veghalf2" to="veghalf2" method="_on_body_entered"]
+[connection signal="body_exited" from="veghalf2" to="veghalf2" method="_on_body_exited"]
+[connection signal="timeout" from="veghalf2/timerhalf2" to="." method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="veghalf2/timerhalf2" to="veghalf1" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="veghalf2/timerhalf2" to="veghalf1/half1" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="veghalf2/timerhalf2" to="veghalf2" method="_on_timerhalf_2_timeout"]
+[connection signal="timeout" from="veghalf2/burntimerhalf2" to="." method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="veghalf2/burntimerhalf2" to="veghalf1" method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="veghalf2/burntimerhalf2" to="veghalf1/half1" method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="veghalf2/burntimerhalf2" to="veghalf2" method="_on_burntimerhalf_2_timeout"]
+[connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout" flags=18]

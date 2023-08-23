@@ -34,18 +34,17 @@ func _on_body_entered(body):
 			print("raw")
 			$Timer.start()
 			print("Cooking!")
-#	elif body.has_meta("serve_top"):
-#		print('Serving!')
-	elif body.has_meta("whole_meat"):
-		print("test")
 	elif body.has_meta("knife"):
-		print("knife cutting vegetable")
-		var cut_vegetable = load("res://scenes/cut_vegetable.tscn")
-		var veg3 = cut_vegetable.instantiate()
-		var vegposition = position 
-		veg3.global_position = vegposition
-		add_sibling(veg3)
-		queue_free()
+		if !cooked:
+			print("knife cutting vegetable")
+			var cut_vegetable = load("res://scenes/cutveg_2.tscn").duplicate()
+			var veg3 = cut_vegetable.instantiate()
+			var vegposition = position 
+			veg3.global_position = vegposition
+			add_sibling(veg3)
+			queue_free()
+		else:
+			print("Already cooked!")
 
 func _on_body_exited(body):
 	if body.has_meta("blue_top"):

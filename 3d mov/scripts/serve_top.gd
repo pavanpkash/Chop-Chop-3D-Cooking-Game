@@ -3,6 +3,7 @@ extends StaticBody3D
 signal kfc
 signal sig_cooked_vegetable_served
 signal sig_two_cooked_vegetable_served
+signal sig_cut_vegetable_served
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,7 @@ func _process(delta):
 var total_points = 0
 var cooked_chicken_served = false
 var cooked_vegetable_served = false
+var cut_vegetable_served = false
 
 func _on_area_3d_body_entered(body):
 	if cooked_chicken_served == false:
@@ -39,7 +41,12 @@ func _on_area_3d_body_entered(body):
 				emit_signal("sig_cooked_vegetable_served")
 			else:
 				print("Serving raw vegetable")
-
+			
+	if cut_vegetable_served == false:
+		if body.has_meta("cut_vegetable"):
+			print("Serving cut vegetable")
+			emit_signal("sig_cut_vegetable_served")
+		
 func _on_area_3d_body_exited(body):
 	if body.has_meta("raw_vegetable"):
 		if body.has_meta("burnt_vegetable"):

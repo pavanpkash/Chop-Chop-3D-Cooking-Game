@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bn00hq2o02to0"]
+
+[node name="Pausemenu3" type="CanvasLayer"]
+process_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.258824)
+
+[node name="BG2" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 55.0
+offset_right = -58.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(1, 1, 1, 0.729412)
+
+[node name="Label" type="Label" parent="BG2"]
+layout_mode = 0
+offset_left = 306.0
+offset_top = -35.0
+offset_right = 715.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 141
+text = "Pause"
+
+[node name="Button" type="Button" parent="BG2"]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 170.0
+offset_right = 638.0
+offset_bottom = 289.0
+text = "Exit
+"
+
+[connection signal="pressed" from="BG2/Button" to="." method="_on_button_pressed"]
