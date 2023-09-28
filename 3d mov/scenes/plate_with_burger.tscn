@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bklxde5d3vbtk"]
+
+[ext_resource type="PackedScene" uid="uid://dndrtx0y7d54a" path="res://assets/appliances/plate.glb" id="1_r6qo3"]
+[ext_resource type="PackedScene" uid="uid://rloa1lmhi82d" path="res://assets/burger/stylized_burger.glb" id="2_4xlkq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dl47l"]
+size = Vector3(0.880089, 0.0950926, 0.736938)
+
+[node name="plate_with_burger" type="StaticBody3D"]
+
+[node name="plate" parent="." instance=ExtResource("1_r6qo3")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dl47l")
+
+[node name="stylized_burger" parent="." instance=ExtResource("2_4xlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.049)

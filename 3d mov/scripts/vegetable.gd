@@ -1,5 +1,5 @@
 extends RigidBody3D
-class_name Interactable
+#class_name Interactable
 
 var object : MeshInstance3D
 var cooked = false
@@ -24,26 +24,33 @@ func _process(delta):
 		set_meta("raw_vegetable", 1)
 
 func _on_body_entered(body):
+	#if the vegetable is touching the stove
 	if body.has_meta("blue_top"):
 		if burned:
+			#if the vegetable is burnt, it will not start the cook timer
 			print("your food is burnt!")
 		elif cooked:
+			#if the vegetable is cooked, it will start the burn timer
 			print("cooked")
 			$burntimer.start()
 		elif !cooked:
+			#if the vegetable is raw, it will start the cook timer
 			print("raw")
 			$Timer.start()
 			print("Cooking!")
 	elif body.has_meta("knife"):
 		if !cooked:
-			print("knife cutting vegetable")
-			var cut_vegetable = load("res://scenes/cutveg_2.tscn").duplicate()
-			var veg3 = cut_vegetable.instantiate()
+			#if the vegetable is raw, the knife can cut the vegetable
+			#when the knife collides with the vegetable, it instantiates the 2 cut vegetables
+			var cut_vegetable = load("res://scenes/cutveg_2.tscn").instantiate()
+			#the cut vegetables instantiate where the old vegetable was cut
 			var vegposition = position 
-			veg3.global_position = vegposition
-			add_sibling(veg3)
+			cut_vegetable.global_position = vegposition
+			add_sibling(cut_vegetable)
+			#the old vegetable is removed from the scene
 			queue_free()
 		else:
+			#if the vegetable is not raw it cannot be cut
 			print("Already cooked!")
 
 func _on_body_exited(body):

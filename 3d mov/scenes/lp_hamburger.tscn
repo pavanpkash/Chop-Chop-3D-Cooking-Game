@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://beytk57ngccyo"]
+
+[ext_resource type="ArrayMesh" uid="uid://2x22weblafcn" path="res://assets/foods/lp_hamburger.res" id="1_yvtwp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clxeb"]
+size = Vector3(0.42618, 0.384704, 0.434077)
+
+[node name="lp_hamburger" type="RigidBody3D"]
+
+[node name="LpHamburger" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.005, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = ExtResource("1_yvtwp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_clxeb")

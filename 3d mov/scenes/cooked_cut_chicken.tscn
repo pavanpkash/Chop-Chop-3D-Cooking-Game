@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn5hi2ouyure5"]
+
+[ext_resource type="PackedScene" uid="uid://dijb8awsqe248" path="res://scenes/turkey_leg.glb" id="1_aj3wv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqgp3"]
+size = Vector3(0.174165, 0.293122, 0.739566)
+
+[node name="cooked_cut_chicken" type="RigidBody3D"]
+
+[node name="turkey_leg" parent="." instance=ExtResource("1_aj3wv")]
+transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, -0.0187423, 0, -0.0240035)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052742, 0.00465295, 0.0256411)
+shape = SubResource("BoxShape3D_gqgp3")

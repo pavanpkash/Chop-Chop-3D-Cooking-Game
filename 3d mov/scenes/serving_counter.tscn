@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccsxl8gik1e7l"]
+
+[ext_resource type="Script" path="res://scripts/serving_counter.gd" id="1_f725b"]
+[ext_resource type="PackedScene" uid="uid://duj662i8im0a6" path="res://assets/appliances/counter_counter_3_shelves.glb" id="1_nsssm"]
+[ext_resource type="Script" path="res://scripts/serving_area.gd" id="4_4gjlr"]
+[ext_resource type="PackedScene" uid="uid://lx7ak8staylj" path="res://scenes/plate.tscn" id="4_b0sp2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ebxn1"]
+size = Vector3(0.987, 1.14799, 1.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xx3m7"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_3kmjd"]
+text = "serving bench"
+font_size = 17
+
+[node name="serving_counter" type="StaticBody3D"]
+script = ExtResource("1_f725b")
+
+[node name="counter_counter_3_shelves" parent="." instance=ExtResource("1_nsssm")]
+transform = Transform3D(0.016, 0, 0, 0, 0.015, 0, 0, 0, 0.014, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062, 0)
+shape = SubResource("BoxShape3D_ebxn1")
+
+[node name="plate" parent="." instance=ExtResource("4_b0sp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.551077, 0)
+metadata/plate = true
+
+[node name="serving_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_4gjlr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="serving_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+shape = SubResource("BoxShape3D_xx3m7")
+
+[node name="serving bench text" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0282164, 0.71536, 0.452614)
+mesh = SubResource("TextMesh_3kmjd")
+skeleton = NodePath("../../..")
+
+[connection signal="body_entered" from="serving_area" to="." method="_on_serving_area_body_entered"]
+[connection signal="body_entered" from="serving_area" to="serving_area" method="_on_body_entered"]
+[connection signal="body_exited" from="serving_area" to="serving_area" method="_on_body_exited"]

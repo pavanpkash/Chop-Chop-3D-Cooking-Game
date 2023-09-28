@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://5aidlkkb5nt6"]
+
+[ext_resource type="PackedScene" uid="uid://bl4qh48t0cu4n" path="res://assets/low_poly_carrot.glb" id="1_v7udw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6l2xv"]
+size = Vector3(3.47989, 4.45939, 1)
+
+[node name="carrot" type="RigidBody3D"]
+
+[node name="low_poly_carrot" parent="." instance=ExtResource("1_v7udw")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.0320078, 0.300417, 0)
+shape = SubResource("BoxShape3D_6l2xv")

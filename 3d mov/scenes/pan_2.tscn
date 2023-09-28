@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpoxvpd4mjn10"]
+
+[ext_resource type="ArrayMesh" uid="uid://2k88mvmutm45" path="res://assets/appliances/pantest.res" id="1_hw1g3"]
+[ext_resource type="Script" path="res://scripts/pan.gd" id="1_lr1n2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfbus"]
+size = Vector3(0.172077, 0.0117942, 0.491181)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ol6wr"]
+size = Vector3(0.169731, 0.0253948, 0.51195)
+
+[node name="pan2" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_lr1n2")
+
+[node name="Pantest" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("1_hw1g3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.217983, 0)
+shape = SubResource("BoxShape3D_rfbus")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.247887, -0.143055, 0)
+shape = SubResource("BoxShape3D_rfbus")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.251854, -0.143055, 0)
+shape = SubResource("BoxShape3D_rfbus")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.143, 0.241)
+shape = SubResource("BoxShape3D_rfbus")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.143, -0.247712)
+shape = SubResource("BoxShape3D_rfbus")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0642291, -0.54574)
+shape = SubResource("BoxShape3D_ol6wr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

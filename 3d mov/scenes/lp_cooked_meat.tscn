@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://y8k0mux0qkes"]
+
+[ext_resource type="ArrayMesh" uid="uid://cijh8g46e4he7" path="res://assets/foods/lp_cooked_meat.res" id="1_gxmbl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mfnlf"]
+size = Vector3(0.51518, 0.171885, 0.347328)
+
+[node name="lp_cooked_meat" type="RigidBody3D"]
+
+[node name="LpCookedMeat" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 0, 0, 0)
+mesh = ExtResource("1_gxmbl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0499599, 0, 0.000238568)
+shape = SubResource("BoxShape3D_mfnlf")

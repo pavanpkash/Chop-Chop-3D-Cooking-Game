@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqsf44e5a64ec"]
+
+[ext_resource type="ArrayMesh" uid="uid://tfu3pxpew54i" path="res://assets/foods/lp_raw_meat.res" id="1_mrw3c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1acjb"]
+size = Vector3(0.51518, 0.171885, 0.347328)
+
+[node name="lp_raw_meat" type="RigidBody3D"]
+
+[node name="RawMeat" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 0, 0, 0)
+mesh = ExtResource("1_mrw3c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0499599, 0, 0.000238568)
+shape = SubResource("BoxShape3D_1acjb")

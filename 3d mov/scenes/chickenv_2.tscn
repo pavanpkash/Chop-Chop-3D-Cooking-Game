@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://ny8x6c4el6gk"]
+
+[ext_resource type="Script" path="res://scripts/chicken.gd" id="1_hl4vf"]
+[ext_resource type="PackedScene" uid="uid://8rjc73bgasuv" path="res://assets/raw_chicken.glb" id="2_be08r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnaep"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0.756863, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e0mdl"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tnaep")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j6dm"]
+
+[node name="chickenv2" type="RigidBody3D" groups=["vegetable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_hl4vf")
+metadata/chicken = true
+
+[node name="chickenmesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0.000274889, 0, -0.000274889, 0.25, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_e0mdl")
+
+[node name="raw_chicken" parent="." instance=ExtResource("2_be08r")]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("BoxShape3D_3j6dm")
+
+[node name="chickenburntimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="chickentimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="timeremaining" type="Label" parent="."]
+offset_left = 529.0
+offset_top = 198.0
+offset_right = 622.0
+offset_bottom = 224.0
+
+[node name="spawntimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="." to="chickenmesh" method="_on_vegetable_body_entered" flags=18]
+[connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]
+[connection signal="timeout" from="chickenburntimer" to="." method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="chickenburntimer" to="chickenmesh" method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="chickenburntimer" to="chickenmesh" method="_on_chickenburntimer_timeout" flags=18]
+[connection signal="timeout" from="chickentimer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="chickentimer" to="chickenmesh" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="chickentimer" to="chickenmesh" method="_on_chickentimer_timeout" flags=18]
+[connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout" flags=18]

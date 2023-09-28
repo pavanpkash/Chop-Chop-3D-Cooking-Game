@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkocv2026j37l"]
+
+[ext_resource type="PackedScene" uid="uid://b4vvknwuo7k58" path="res://scenes/raw_cut_chicken.tscn" id="1_0cv0e"]
+
+[node name="raw_cut_chicken" type="Node3D"]
+
+[node name="raw_cut_chicken" parent="." instance=ExtResource("1_0cv0e")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="raw_cut_chicken2" parent="." instance=ExtResource("1_0cv0e")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.231416)

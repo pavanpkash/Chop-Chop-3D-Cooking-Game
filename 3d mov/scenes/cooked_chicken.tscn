@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds55lfoj683b4"]
+
+[ext_resource type="Script" path="res://scripts/cooked_chicken.gd" id="1_ju1mq"]
+[ext_resource type="PackedScene" uid="uid://oh0xitvrd8pu" path="res://assets/foods/roast_chicken.glb" id="1_kl3wt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ogufo"]
+size = Vector3(0.606057, 0.310869, 0.67866)
+
+[node name="whole_cooked_chicken" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ju1mq")
+metadata/cooked_whole_chicken = true
+
+[node name="roast_chicken" parent="." instance=ExtResource("1_kl3wt")]
+transform = Transform3D(1.564, 0, 0, 0, 1.564, 0, 0, 0, 1.564, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0515889, -0.0716799)
+shape = SubResource("BoxShape3D_ogufo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

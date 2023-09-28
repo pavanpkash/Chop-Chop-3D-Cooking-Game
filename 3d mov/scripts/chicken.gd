@@ -17,9 +17,15 @@ func _process(delta):
 		new_color2.albedo_color = Color.BLACK
 		set_meta("burnt_chicken", 1)
 	elif cooked:
-		var material = $"chickenmesh".get_active_material(0)
-		material.albedo_color = Color.SADDLE_BROWN
-		set_meta("cooked_chicken", 1)
+		var cooked_chicken = load("res://scenes/cooked_chicken.tscn")
+		var chicken4 = cooked_chicken.instantiate()
+		var chickenposition = position
+		chicken4.global_position = chickenposition
+		add_sibling(chicken4)
+		queue_free()
+#		var material = $"chickenmesh".get_active_material(0)
+#		material.albedo_color = Color.SADDLE_BROWN
+#		set_meta("cooked_chicken", 1)
 	elif !cooked:
 		set_meta("raw_chicken", 1)
 
@@ -38,7 +44,7 @@ func _on_body_entered(body):
 		print("test")
 	elif body.has_meta("knife"):
 		print("knife cutting chicken")
-		var cut_chicken = load("res://scenes/cut_chicken.tscn")
+		var cut_chicken = load("res://scenes/2raw_cut_chicken.tscn")
 		var chicken3 = cut_chicken.instantiate()
 		var chickenposition = position
 		chicken3.global_position = chickenposition

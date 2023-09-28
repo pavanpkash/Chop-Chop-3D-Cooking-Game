@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuiwl1hnewx1b"]
+
+[ext_resource type="Script" path="res://scripts/chicken.gd" id="1_i66yt"]
+[ext_resource type="PackedScene" uid="uid://bske2gp1368bt" path="res://scenes/raw_cut_chicken.tscn" id="2_uh82r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tnxm4"]
+size = Vector3(0.224673, 0.267015, 0.472114)
+
+[node name="chicken" type="RigidBody3D" groups=["vegetable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_i66yt")
+metadata/chicken = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tnxm4")
+
+[node name="raw_cut_chicken" parent="." instance=ExtResource("2_uh82r")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+
+[node name="chickenburntimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="chickentimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="timeremaining" type="Label" parent="."]
+offset_left = 529.0
+offset_top = 198.0
+offset_right = 622.0
+offset_bottom = 224.0
+
+[node name="spawntimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]
+[connection signal="timeout" from="chickenburntimer" to="." method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="chickentimer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout" flags=18]
