@@ -4,6 +4,13 @@ signal kfc
 signal sig_cooked_vegetable_served
 signal sig_two_cooked_vegetable_served
 signal sig_cut_vegetable_served
+signal sig_cooked_patty_served
+signal sig_cheese_slice_served
+signal sig_top_bun_served
+signal sig_bottom_bun_served
+signal sig_tomato1_served
+signal sig_tomato2_served
+signal sig_tomato3_served
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +26,13 @@ var cooked_chicken_served = false
 var cooked_vegetable_served = false
 var cut_vegetable_served = false
 var cooked_whole_chicken_served = false
-var raw_patty_served = false
+var cooked_patty_served = false
+var cheese_slice_served = false
+var top_bun_served = false
+var bottom_bun_served = false
+var tomato1_served = false
+var tomato2_served = false
+var tomato3_served = false
 
 
 func points():
@@ -30,53 +43,68 @@ func points():
 	if cooked_vegetable_served:
 		print("cokveg")
 
-
 func _on_serving_area_body_entered(body):
-#	if cooked_whole_chicken_served == false:
-#		if body.has_meta("cooked_whole_chicken"):
-#			print("serving cooked whole chicken")
-#			var whole_cooked_chicken_on_plate = load("res://scenes/plate_with_whole_cooked_chicken.tscn").instantiate()
-#			var chickenposition = position 
-#			chickenposition.y += 0.551
-#			whole_cooked_chicken_on_plate.global_position = chickenposition
-#			add_sibling(whole_cooked_chicken_on_plate)
-#			cooked_whole_chicken_served = true
-##			$plate.queue_free()
-#			plate = $plate
-#			plate.queue_free()
+	if cooked_patty_served == false:
+		if body.has_meta("cooked_patty"):
+			print("serving cooked patty")
+			emit_signal("sig_cooked_patty_served")
+			cooked_patty_served = true
+			
+	if cheese_slice_served == false:
+		if body.has_meta("cheese_slice"):
+			print("serving cheese slice")
+			emit_signal("sig_cheese_slice_served")
+			cheese_slice_served = true
 	
-	if cooked_chicken_served == false:
-		if body.has_meta("chicken"):
-			if body.has_meta("burnt_chicken"):
-				print("Serving burnt chicken")
-			elif body.has_meta("cooked_chicken"):
-				print("Serving cooked chicken")
-				cooked_chicken_served = true
-				emit_signal("kfc")
-			else:
-				print("serving raw chicken")
+	if top_bun_served == false:
+		if body.has_meta("top_bun"):
+			print("serving top bun")
+			emit_signal("sig_top_bun_served")
+			top_bun_served = true
+			
+##move to serving counter script
+#	if tomato2_served == true:
+#		if body.has_meta("sliced_tomato"):
+#			print("serving sliced tomato3")
+#			emit_signal("sig_tomato3_served")
+#			tomato3_served = true
+#	elif tomato1_served == false:
+#		if body.has_meta("sliced_tomato"):
+#			print("serving sliced tomato1")
+#			emit_signal("sig_tomato1_served")
+#			tomato1_served = true
+#	elif tomato1_served == true:
+#		if body.has_meta("sliced_tomato"):
+#			print("serving sliced tomato2")
+#			emit_signal("sig_tomato2_served")
+#			tomato2_served = true
+
+#	if cooked_chicken_served == false:
+#		if body.has_meta("chicken"):
+#			if body.has_meta("burnt_chicken"):
+#				print("Serving burnt chicken")
+#			elif body.has_meta("cooked_chicken"):
+#				print("Serving cooked chicken")
+#				cooked_chicken_served = true
+#				emit_signal("kfc")
+#			else:
+#				print("serving raw chicken")
 				
-	if cooked_vegetable_served == false:
-		if body.has_meta("raw_vegetable"):
-			if body.has_meta("burnt_vegetable"):
-				print("Serving burnt vegetable")
-			elif body.has_meta("cooked_vegetable"):
-				print("Serving cooked vegetable")
-				cooked_vegetable_served = true
-				emit_signal("sig_cooked_vegetable_served")
-			else:
-				print("Serving raw vegetable")
-			
-	if cut_vegetable_served == false:
-		if body.has_meta("cut_vegetable"):
-			print("Serving cut vegetable")
-			emit_signal("sig_cut_vegetable_served")
-			
-	if raw_patty_served == false:
-		if body.has_meta("raw_patty"):
-			print("serving raw patty")
-			emit_signal("sig_raw_patty_served")
-			raw_patty_served = true
+#	if cooked_vegetable_served == false:
+#		if body.has_meta("raw_vegetable"):
+#			if body.has_meta("burnt_vegetable"):
+#				print("Serving burnt vegetable")
+#			elif body.has_meta("cooked_vegetable"):
+#				print("Serving cooked vegetable")
+#				cooked_vegetable_served = true
+#				emit_signal("sig_cooked_vegetable_served")
+#			else:
+#				print("Serving raw vegetable")
+#
+#	if cut_vegetable_served == false:
+#		if body.has_meta("cut_vegetable"):
+#			print("Serving cut vegetable")
+#			emit_signal("sig_cut_vegetable_served")
 
 func _on_serving_area_body_exited(body):
 		if body.has_meta("raw_vegetable"):

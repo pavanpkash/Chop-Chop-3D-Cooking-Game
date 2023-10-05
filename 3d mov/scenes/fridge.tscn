@@ -3,12 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cveoyuyur13sw" path="res://assets/appliances/appliance_refrigerator.glb" id="1_mrw7t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y00ul"]
-size = Vector3(0.953201, 2.67048, 1.20422)
+size = Vector3(0.966, 2.01, 0.836)
 
 [node name="fridge" type="StaticBody3D"]
 
 [node name="appliance_refrigerator" parent="." instance=ExtResource("1_mrw7t")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+transform = Transform3D(0.08, 0, 0, 0, 0.062, 0, 0, 0, 0.08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0337689, 0.045504)
 shape = SubResource("BoxShape3D_y00ul")

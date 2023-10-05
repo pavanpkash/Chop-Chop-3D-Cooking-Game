@@ -1,15 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccsxl8gik1e7l"]
+[gd_scene load_steps=7 format=3 uid="uid://ccsxl8gik1e7l"]
 
 [ext_resource type="Script" path="res://scripts/serving_counter.gd" id="1_f725b"]
 [ext_resource type="PackedScene" uid="uid://duj662i8im0a6" path="res://assets/appliances/counter_counter_3_shelves.glb" id="1_nsssm"]
-[ext_resource type="Script" path="res://scripts/serving_area.gd" id="4_4gjlr"]
 [ext_resource type="PackedScene" uid="uid://lx7ak8staylj" path="res://scenes/plate.tscn" id="4_b0sp2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebxn1"]
 size = Vector3(0.987, 1.14799, 1.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xx3m7"]
-size = Vector3(1, 0.2, 1)
+size = Vector3(1, 0.419996, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_3kmjd"]
 text = "serving bench"
@@ -31,10 +30,10 @@ metadata/plate = true
 
 [node name="serving_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("4_4gjlr")
+metadata/serving_area = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="serving_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29212, 0)
 shape = SubResource("BoxShape3D_xx3m7")
 
 [node name="serving bench text" type="MeshInstance3D" parent="."]

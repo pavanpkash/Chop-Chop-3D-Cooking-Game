@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn5hi2ouyure5"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dijb8awsqe248" path="res://scenes/turkey_leg.glb" id="1_aj3wv"]
+[ext_resource type="PackedScene" uid="uid://dijb8awsqe248" path="res://assets/turkey_leg.glb" id="1_aj3wv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gqgp3"]
 size = Vector3(0.174165, 0.293122, 0.739566)

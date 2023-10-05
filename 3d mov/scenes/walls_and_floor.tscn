@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://ctqsrke84wq7t"]
+
+[ext_resource type="Texture2D" uid="uid://ca3wou2umh8fl" path="res://assets/textures/dark_brick_wall_diff_4k.png" id="1_qm044"]
+[ext_resource type="Texture2D" uid="uid://bf610qf0m1f8o" path="res://assets/textures/laminate_floor_02_diff_4k.png" id="2_s0fp8"]
+[ext_resource type="Texture2D" uid="uid://biwa7jmrg16lr" path="res://assets/textures/laminate_floor_02_nor_gl_4k.png" id="3_iega6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5h1h"]
+albedo_texture = ExtResource("1_qm044")
+uv1_scale = Vector3(19.761, 2.823, 19.761)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lwa2j"]
+material = SubResource("StandardMaterial3D_a5h1h")
+size = Vector3(1, 4, 15)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ng1tw"]
+points = PackedVector3Array(-0.5, -2, -7.5, 0.5, -2, -7.5, -0.5, -2, 7.5, -0.5, 2, -7.5, 0.5, 2, -7.5, 0.5, -2, 7.5, -0.5, 2, 7.5, 0.5, 2, 7.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8rnfs"]
+points = PackedVector3Array(-0.5, -2, -7.5, 0.5, -2, -7.5, -0.5, -2, 7.5, -0.5, 2, -7.5, 0.5, 2, -7.5, 0.5, -2, 7.5, -0.5, 2, 7.5, 0.5, 2, 7.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6wjl8"]
+points = PackedVector3Array(-0.5, -2, -7.5, 0.5, -2, -7.5, -0.5, -2, 7.5, -0.5, 2, -7.5, 0.5, 2, -7.5, 0.5, -2, 7.5, -0.5, 2, 7.5, 0.5, 2, 7.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ff1sx"]
+points = PackedVector3Array(-0.5, -2, -7.5, 0.5, -2, -7.5, -0.5, -2, 7.5, -0.5, 2, -7.5, 0.5, 2, -7.5, 0.5, -2, 7.5, -0.5, 2, 7.5, 0.5, 2, 7.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bm2p"]
+albedo_texture = ExtResource("2_s0fp8")
+normal_enabled = true
+normal_texture = ExtResource("3_iega6")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sx2qg"]
+material = SubResource("StandardMaterial3D_5bm2p")
+size = Vector2(50, 50)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_trlxs"]
+points = PackedVector3Array(-25, 0, -25, -25, 0, 25, 25, 0, -25, 25, 0, 25)
+
+[node name="Walls and Floor" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
+
+[node name="wall1" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_lwa2j")
+skeleton = NodePath("../../RigidBody3D/floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_ng1tw")
+
+[node name="wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+mesh = SubResource("BoxMesh_lwa2j")
+skeleton = NodePath("../../RigidBody3D/floor")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8rnfs")
+
+[node name="wall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -6)
+mesh = SubResource("BoxMesh_lwa2j")
+skeleton = NodePath("../../RigidBody3D/floor")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -6)
+shape = SubResource("ConvexPolygonShape3D_6wjl8")
+
+[node name="wall4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 5)
+mesh = SubResource("BoxMesh_lwa2j")
+skeleton = NodePath("../../RigidBody3D/floor")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 5)
+shape = SubResource("ConvexPolygonShape3D_ff1sx")
+
+[node name="floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1, 0)
+
+[node name="floor" type="MeshInstance3D" parent="floor"]
+mesh = SubResource("PlaneMesh_sx2qg")
+skeleton = NodePath("../../HUD_Score")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("ConvexPolygonShape3D_trlxs")

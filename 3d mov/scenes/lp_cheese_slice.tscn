@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dibx0kbvet0wq"]
+
+[ext_resource type="Script" path="res://scripts/lp_cheese_slice.gd" id="1_tgwus"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbbuf"]
+albedo_color = Color(1, 1, 0.32549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6v1ag"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_cbbuf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cl84w"]
+size = Vector3(0.4, 0.013, 0.4)
+
+[node name="lp_cheese_slice" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_tgwus")
+metadata/cheese_slice = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.013, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("BoxMesh_6v1ag")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cl84w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

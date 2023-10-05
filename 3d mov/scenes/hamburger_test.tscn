@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfalshra62j6f"]
+
+[ext_resource type="PackedScene" uid="uid://lx7ak8staylj" path="res://scenes/plate.tscn" id="2_yh6sk"]
+[ext_resource type="PackedScene" uid="uid://b5cwbv2r5um61" path="res://scenes/static_cooked_patty.tscn" id="3_k0syf"]
+[ext_resource type="PackedScene" uid="uid://mfphgu306b7e" path="res://scenes/static_sliced_tomato.tscn" id="4_qwtsj"]
+[ext_resource type="PackedScene" uid="uid://c33y5dmy061cf" path="res://scenes/static_top_bun.tscn" id="5_c1ons"]
+[ext_resource type="PackedScene" uid="uid://cjbq3uyy2h13" path="res://scenes/static_cheese_slice.tscn" id="6_n2m1r"]
+[ext_resource type="PackedScene" uid="uid://xqyxjtd88je1" path="res://scenes/static_bottom_bun.tscn" id="6_w0cbl"]
+
+[node name="hamburger_test" type="Node3D"]
+
+[node name="static_cooked_patty2" parent="." instance=ExtResource("3_k0syf")]
+
+[node name="plate" parent="." instance=ExtResource("2_yh6sk")]
+
+[node name="static_cheese_slice" parent="." instance=ExtResource("6_n2m1r")]
+
+[node name="static_sliced_tomato5" parent="." instance=ExtResource("4_qwtsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.977, 1.242, -3.13)
+
+[node name="static_sliced_tomato6" parent="." instance=ExtResource("4_qwtsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11711, 1.242, -2.93364)
+
+[node name="static_sliced_tomato4" parent="." instance=ExtResource("4_qwtsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89042, 1.24194, -2.91832)
+
+[node name="static_top_bun" parent="." instance=ExtResource("5_c1ons")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.29, -3)
+
+[node name="static_bottom_bun" parent="." instance=ExtResource("6_w0cbl")]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://w2ji6bhef5ve"]
+
+[ext_resource type="PackedScene" uid="uid://denf220taxm2" path="res://assets/cheese_low_poly.glb" id="1_fskru"]
+[ext_resource type="Script" path="res://scripts/lp_whole_cheese.gd" id="1_qkx0v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5hgg"]
+size = Vector3(0.453125, 0.185878, 0.397851)
+
+[node name="lp_whole_cheese" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_qkx0v")
+
+[node name="cheese_low_poly" parent="." instance=ExtResource("1_fskru")]
+transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, -0.109, -0.027)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0114138, 0.016334)
+shape = SubResource("BoxShape3D_r5hgg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

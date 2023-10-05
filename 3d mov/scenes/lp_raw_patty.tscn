@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmkru77pj6kwb"]
+[gd_scene load_steps=6 format=3 uid="uid://dmkru77pj6kwb"]
+
+[ext_resource type="Script" path="res://scripts/lp_raw_patty.gd" id="1_3yi85"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry0j5"]
 resource_name = "Material.001"
@@ -40,9 +42,12 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e2sy6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nfu2f"]
-size = Vector3(0.400985, 0.0804412, 0.397856)
+size = Vector3(0.400481, 0.0828178, 0.407457)
 
 [node name="lp_raw_patty" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_3yi85")
 metadata/raw_patty = true
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
@@ -53,3 +58,14 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000628753, 0)
 shape = SubResource("BoxShape3D_nfu2f")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="burntimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="burntimer" to="." method="_on_burntimer_timeout"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy1fgnrm2e23g"]
+
+[ext_resource type="PackedScene" uid="uid://cs5cqy38r08m0" path="res://assets/appliances/appliance_oven.glb" id="1_2owsn"]
+[ext_resource type="PackedScene" uid="uid://7c36nqkbawsw" path="res://scenes/fire_particles.tscn" id="3_d4yvl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftffl"]
+size = Vector3(0.960978, 0.0857521, 0.90199)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njgt6"]
+size = Vector3(1, 1.259, 1)
+
+[node name="stove" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.07678, 0.472095, -3)
+
+[node name="appliance_oven" parent="." instance=ExtResource("1_2owsn")]
+transform = Transform3D(0.083, 0, 0, 0, 0.077, 0, 0, 0, 0.089, 0, 0, 0)
+
+[node name="stove_top" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.592338, 0)
+metadata/blue_top = true
+
+[node name="stove_collision" type="CollisionShape3D" parent="stove_top"]
+shape = SubResource("BoxShape3D_ftffl")
+metadata/blue_top = true
+
+[node name="oven_collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00663495, -0.0613849, 0.0319965)
+shape = SubResource("BoxShape3D_njgt6")
+
+[node name="fire_particles" parent="." instance=ExtResource("3_d4yvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.58, -0.15)
+
+[node name="fire_particles2" parent="." instance=ExtResource("3_d4yvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.58, 0.25)
+
+[node name="fire_particles3" parent="." instance=ExtResource("3_d4yvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.58, 0.25)
+
+[node name="fire_particles4" parent="." instance=ExtResource("3_d4yvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.58, -0.15)

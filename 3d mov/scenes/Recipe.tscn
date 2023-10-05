@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://o0ow43r3i0sm"]
+
+[sub_resource type="TextMesh" id="TextMesh_g63ut"]
+text = "Burger Recipe:
+1 Top bun
+3 Tomato slices
+1 Cheese slice
+1 Cooked patty
+1 Bottom bun"
+font_size = 15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evskh"]
+albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+backlight = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ulrg4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3j5h"]
+albedo_color = Color(0.101961, 0.101961, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gsick"]
+material = SubResource("StandardMaterial3D_j3j5h")
+
+[node name="Recipe" type="Node3D"]
+
+[node name="Recipe" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 0, 0)
+mesh = SubResource("TextMesh_g63ut")
+surface_material_override/0 = SubResource("StandardMaterial3D_evskh")
+
+[node name="Whiteboard" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.085, 0, 0, 0)
+mesh = SubResource("BoxMesh_ulrg4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.3, 0, 0, 0, 0.105, 0, 0, 0, 0.2, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_gsick")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.3, 0, 0, 0, 0.105, 0, 0, 0, 0.2, 0, -1.5, 0)
+mesh = SubResource("BoxMesh_gsick")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.44248e-07, -0.105, 0, 3.3, -4.5897e-09, 0, 0, 0, 0.2, 1.5, 0, 0)
+mesh = SubResource("BoxMesh_gsick")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.44248e-07, -0.105, 0, 3.3, -4.5897e-09, 0, 0, 0, 0.2, -1.5, 0, 0)
+mesh = SubResource("BoxMesh_gsick")

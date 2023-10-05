@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxce6tlb3gie"]
+
+[ext_resource type="PackedScene" uid="uid://cnfq5ce5wepm4" path="res://assets/foods/a_tomato.glb" id="1_41bqb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slxck"]
+size = Vector3(0.30882, 0.273149, 0.318622)
+
+[node name="lp_tomato" type="RigidBody3D"]
+
+[node name="a_tomato" parent="." instance=ExtResource("1_41bqb")]
+transform = Transform3D(0.032, 0, 0, 0, 0.032, 0, 0, 0, 0.032, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24513, 0)
+shape = SubResource("BoxShape3D_slxck")

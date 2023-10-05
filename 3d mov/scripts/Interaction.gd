@@ -12,9 +12,9 @@ func _process(delta):
 	prompt.text = ""
 	if is_colliding():
 		var detected = get_collider()
-		
-		if detected is Interactable:
-			prompt.text = detected.name
+
+#		if detected is Interactable:
+#			prompt.text = detected.name
 
 
 func _on_vegetable_body_exited(body):

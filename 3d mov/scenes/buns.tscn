@@ -9,3 +9,5 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0954538, 0)
 
 [node name="bottom_bun" parent="." instance=ExtResource("2_cx2fq")]
+max_contacts_reported = 1
+contact_monitor = true
