@@ -20,7 +20,7 @@ func _process(delta):
 #	add_sibling(item)
 #	queue_free()
 
-func _on_body_entered(body):
+#func _on_body_entered(body):
 #move to serving counter script
 #	if tomato1_served == false:
 #		if body.has_meta("plate"):
@@ -37,34 +37,34 @@ func _on_body_entered(body):
 #			print("serving sliced tomato3")
 #			tomato3_served = true
 
-	if tomato2_served == true:
-		if body.has_meta("plate"):
-			print("serving sliced tomato3")
-#			emit_signal("sig_tomato3_served")
-			var item = load("res://scenes/static_sliced_tomato.tscn").instantiate()
-			add_sibling(item)
-			queue_free()
-			tomato3_served = true
-	if tomato1_served == true:
-		if body.has_meta("plate"):
-			print("serving sliced tomato2")
-#			emit_signal("sig_tomato2_served")
-			var item = load("res://scenes/static_sliced_tomato.tscn").instantiate()
-			add_sibling(item)
-			queue_free()
-			tomato2_served = true
-	elif tomato1_served == false:
-		if body.has_meta("plate"):
-			print("serving sliced tomato1")
-#			emit_signal("sig_tomato1_served")
+#	if tomato2_served == true:
+#		if body.has_meta("plate"):
+#			print("serving sliced tomato3")
+##			emit_signal("sig_tomato3_served")
 #			var item = load("res://scenes/static_sliced_tomato.tscn").instantiate()
 #			add_sibling(item)
-			var cut_item = load("res://scenes/static_sliced_tomato.tscn").instantiate()
-			var item_position = position 
-			cut_item.global_position = item_position
-			add_sibling(cut_item)
-			queue_free()
-			tomato1_served = true
+##			queue_free()
+#			tomato3_served = true
+#	if tomato1_served == true:
+#		if body.has_meta("plate"):
+#			print("serving sliced tomato2")
+##			emit_signal("sig_tomato2_served")
+#			var item = load("res://scenes/static_sliced_tomato.tscn").instantiate()
+#			add_sibling(item)
+##			queue_free()
+#			tomato2_served = true
+#	elif tomato1_served == false:
+#		if body.has_meta("plate"):
+#			print("serving sliced tomato1")
+##			emit_signal("sig_tomato1_served")
+##			var item = load("res://scenes/static_sliced_tomato.tscn").instantiate()
+##			add_sibling(item)
+#			var cut_item = load("res://scenes/static_sliced_tomato.tscn").instantiate()
+#			var item_position = position 
+#			cut_item.global_position = item_position
+#			add_sibling(cut_item)
+##			queue_free()
+#			tomato1_served = true
 
 #func _on_serving_counter_sig_tomato_1_served():
 #	print("serving tomato1")

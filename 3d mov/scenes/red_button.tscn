@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c87qqh3cdv6gk"]
+
+[ext_resource type="Script" path="res://scripts/red_button.gd" id="1_dccdg"]
+[ext_resource type="PackedScene" uid="uid://cddnpfobd74g" path="res://assets/red_button.glb" id="1_hlf8e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fp16f"]
+size = Vector3(0.2259, 0.125724, 0.215157)
+
+[node name="red_button" type="StaticBody3D"]
+script = ExtResource("1_dccdg")
+
+[node name="red_button" parent="." instance=ExtResource("1_hlf8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10071, 0.601296, -0.070809)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0177741, 0)
+shape = SubResource("BoxShape3D_fp16f")

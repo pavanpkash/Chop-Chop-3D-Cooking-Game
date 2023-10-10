@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccsxl8gik1e7l"]
+[gd_scene load_steps=8 format=3 uid="uid://ccsxl8gik1e7l"]
 
 [ext_resource type="Script" path="res://scripts/serving_counter.gd" id="1_f725b"]
 [ext_resource type="PackedScene" uid="uid://duj662i8im0a6" path="res://assets/appliances/counter_counter_3_shelves.glb" id="1_nsssm"]
 [ext_resource type="PackedScene" uid="uid://lx7ak8staylj" path="res://scenes/plate.tscn" id="4_b0sp2"]
+[ext_resource type="FontFile" uid="uid://barbabfpjkm12" path="res://assets/fonts/Holysweet-rgn4K.otf" id="4_q7l48"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebxn1"]
 size = Vector3(0.987, 1.14799, 1.02)
@@ -12,6 +13,7 @@ size = Vector3(1, 0.419996, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_3kmjd"]
 text = "serving bench"
+font = ExtResource("4_q7l48")
 font_size = 17
 
 [node name="serving_counter" type="StaticBody3D"]
@@ -43,4 +45,5 @@ skeleton = NodePath("../../..")
 
 [connection signal="body_entered" from="serving_area" to="." method="_on_serving_area_body_entered"]
 [connection signal="body_entered" from="serving_area" to="serving_area" method="_on_body_entered"]
+[connection signal="body_exited" from="serving_area" to="." method="_on_serving_area_body_exited"]
 [connection signal="body_exited" from="serving_area" to="serving_area" method="_on_body_exited"]

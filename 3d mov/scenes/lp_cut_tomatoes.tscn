@@ -4,11 +4,14 @@
 
 [node name="lp_cut_tomatoes" type="Node3D"]
 
-[node name="lp_sliced_tomato" parent="." instance=ExtResource("1_8c06y")]
+[node name="lp_sliced_tomato1" parent="." instance=ExtResource("1_8c06y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261331, 0)
+metadata/sliced_tomato_1 = true
 
 [node name="lp_sliced_tomato2" parent="." instance=ExtResource("1_8c06y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215128, 0)
+metadata/sliced_tomato_2 = true
 
 [node name="lp_sliced_tomato3" parent="." instance=ExtResource("1_8c06y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.166227, 0)
+metadata/sliced_tomato_3 = true

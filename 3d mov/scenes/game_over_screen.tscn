@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://bixjsiplrjsb4"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_0w3i5"]
+[ext_resource type="FontFile" uid="uid://barbabfpjkm12" path="res://assets/fonts/Holysweet-rgn4K.otf" id="1_csviw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwtl3"]
+bg_color = Color(0.211765, 0.360784, 0.6, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ce4r"]
+font = ExtResource("1_csviw")
+font_size = 103
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6hlq"]
+font = ExtResource("1_csviw")
+font_size = 45
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0w3i5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -354.0
+offset_top = -276.0
+offset_right = 354.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jwtl3")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = 25.0
+offset_right = 113.0
+offset_bottom = 74.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_1ce4r")
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -76.0
+offset_right = 126.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "a"
+label_settings = SubResource("LabelSettings_t6hlq")
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -8.0
+offset_right = 83.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_csviw")
+theme_override_font_sizes/font_size = 45
+text = "RETRY"
+
+[node name="QuitButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = 74.0
+offset_right = 81.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_csviw")
+theme_override_font_sizes/font_size = 45
+text = "Quit
+"
+
+[connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]

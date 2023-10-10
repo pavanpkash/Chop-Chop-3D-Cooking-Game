@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu1myrn23joxc"]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="PackedScene" uid="uid://drq1h1s841jf5" path="res://scenes/oven_2.tscn" id="1_24h5t"]
 [ext_resource type="PackedScene" uid="uid://ds8h7rysoy7k0" path="res://scenes/counter.tscn" id="2_su5ev"]
 [ext_resource type="PackedScene" uid="uid://dldy2imd3gi3f" path="res://scenes/fridge.tscn" id="3_ajriy"]
-[ext_resource type="PackedScene" uid="uid://demdr0xs1m8in" path="res://scenes/pan.tscn" id="4_7aoa5"]
+[ext_resource type="PackedScene" uid="uid://demdr0xs1m8in" path="res://scenes/unused scenes/pan.tscn" id="4_7aoa5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g6cx4"]
 size = Vector2(50, 50)

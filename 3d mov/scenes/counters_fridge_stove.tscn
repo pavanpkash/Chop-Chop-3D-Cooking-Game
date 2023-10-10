@@ -1,31 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://i151b7a5dv0o"]
+[gd_scene load_steps=4 format=3 uid="uid://i151b7a5dv0o"]
 
 [ext_resource type="PackedScene" uid="uid://dldy2imd3gi3f" path="res://scenes/fridge.tscn" id="1_g3gql"]
 [ext_resource type="PackedScene" uid="uid://ds8h7rysoy7k0" path="res://scenes/counter.tscn" id="2_04r4v"]
 [ext_resource type="PackedScene" uid="uid://cy1fgnrm2e23g" path="res://scenes/stove.tscn" id="4_yrglk"]
-[ext_resource type="Script" path="res://scripts/binarea3d.gd" id="5_c6hjl"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ehjyb"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_5782c"]
-size = Vector3(1, 1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8iki"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_x8nia"]
-size = Vector3(1, 1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrtvo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4puf1"]
-size = Vector3(1, 1, 0.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mbyvp"]
-size = Vector3(1, 0.360606, 1)
-
-[sub_resource type="TextMesh" id="TextMesh_o7sun"]
-text = "bin"
-font_size = 17
 
 [node name="Counters_Fridge_Stove" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0.5, -5)
@@ -62,56 +39,3 @@ visible = false
 
 [node name="stove" parent="." instance=ExtResource("4_yrglk")]
 transform = Transform3D(-5.76205e-08, 0, -1, 0, 1, 0, 1, 0, -5.76205e-08, 5.06481, -0.0622889, -2)
-
-[node name="bin" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -3)
-physics_material_override = SubResource("PhysicsMaterial_ehjyb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="bin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.435)
-mesh = SubResource("BoxMesh_5782c")
-surface_material_override/0 = SubResource("StandardMaterial3D_h8iki")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="bin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.565)
-mesh = SubResource("BoxMesh_5782c")
-surface_material_override/0 = SubResource("StandardMaterial3D_h8iki")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="bin"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.44983, 0, 0.0440934)
-mesh = SubResource("BoxMesh_x8nia")
-surface_material_override/0 = SubResource("StandardMaterial3D_xrtvo")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="bin"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.450516, 0, 0.0440934)
-mesh = SubResource("BoxMesh_x8nia")
-surface_material_override/0 = SubResource("StandardMaterial3D_xrtvo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.435)
-shape = SubResource("BoxShape3D_4puf1")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="bin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.565)
-shape = SubResource("BoxShape3D_4puf1")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="bin"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.449252, 0, 0.0843688)
-shape = SubResource("BoxShape3D_4puf1")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="bin"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.454117, 0, 0.0843688)
-shape = SubResource("BoxShape3D_4puf1")
-
-[node name="binarea3d" type="Area3D" parent="bin"]
-script = ExtResource("5_c6hjl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bin/binarea3d"]
-shape = SubResource("BoxShape3D_mbyvp")
-
-[node name="bin text" type="MeshInstance3D" parent="bin"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.42413, 0.71536, 0)
-mesh = SubResource("TextMesh_o7sun")
-skeleton = NodePath("../..")
-
-[connection signal="body_entered" from="bin/binarea3d" to="bin/binarea3d" method="_on_body_entered"]

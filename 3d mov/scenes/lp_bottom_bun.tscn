@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://h6oybtpskvh1"]
+
+[ext_resource type="Script" path="res://scripts/bottom_bun.gd" id="1_4bjne"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnelw"]
+resource_local_to_scene = true
+albedo_color = Color(0.905882, 0.741176, 0.478431, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t0oj5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hnelw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nfu2f"]
+size = Vector3(0.453642, 0.0860142, 0.460731)
+
+[node name="bottom_bun" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_4bjne")
+metadata/bottom_bun = true
+
+[node name="Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.45, 0, 0, 0, 0.045, 0, 0, 0, 0.45, 0, 0, 0)
+mesh = SubResource("CylinderMesh_t0oj5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000661434, 0)
+shape = SubResource("BoxShape3D_nfu2f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

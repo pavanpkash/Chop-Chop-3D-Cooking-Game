@@ -3,6 +3,7 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
+const SLOW_WALK_SPEED = 1.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 
@@ -66,7 +67,8 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(60))
 	if event.is_action_pressed("ui_cancel"):
-		$PauseMenu4.pause()
+		$"../NewPauseMenu".visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -80,6 +82,8 @@ func _physics_process(delta):
 	# Handle Sprint.
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
+	elif Input.is_action_pressed("slow_walk"):
+		speed = SLOW_WALK_SPEED
 	else:
 		speed = WALK_SPEED
 

@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://o0ow43r3i0sm"]
+[gd_scene load_steps=7 format=3 uid="uid://o0ow43r3i0sm"]
+
+[ext_resource type="FontFile" uid="uid://barbabfpjkm12" path="res://assets/fonts/Holysweet-rgn4K.otf" id="1_ba4l5"]
 
 [sub_resource type="TextMesh" id="TextMesh_g63ut"]
 text = "Burger Recipe:
@@ -7,6 +9,7 @@ text = "Burger Recipe:
 1 Cheese slice
 1 Cooked patty
 1 Bottom bun"
+font = ExtResource("1_ba4l5")
 font_size = 15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evskh"]

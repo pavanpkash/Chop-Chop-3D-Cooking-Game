@@ -1,14 +1,11 @@
 extends RigidBody3D
-#class_name Interactable
 
-var object : MeshInstance3D
 var cooked = false
 var burned = false
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	set_meta("vegetable", 1)
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -72,11 +69,11 @@ func _on_area_3d_body_entered(body):
 	if body.has_meta("vegetable") or body.has_meta("burnt_vegetable"):
 		print("Binned vegetable.")
 		body.queue_free()
-		spawn_veg_copies()
+#		spawn_veg_copies()
 
-func spawn_veg_copies():
-	var vegetable = preload("res://scenes/vegetable.tscn")
-	var veg2 = vegetable.instantiate()
-	add_sibling(veg2)
-	veg2.set_meta("vegetable", 1)
-	print("respawning vegetable")
+#func spawn_veg_copies():
+#	var vegetable = preload("res://scenes/vegetable.tscn")
+#	var veg2 = vegetable.instantiate()
+#	add_sibling(veg2)
+#	veg2.set_meta("vegetable", 1)
+#	print("respawning vegetable")

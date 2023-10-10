@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c06n086ptjh6j"]
 
-[ext_resource type="Texture2D" uid="uid://dgm345awc6erp" path="res://assets/knife_paring_knife_001_PastedImage220104-201001.png" id="1_hsegr"]
+[ext_resource type="Texture2D" uid="uid://dgm345awc6erp" path="res://assets/appliances/knife_paring_knife_001_PastedImage220104-201001.png" id="1_hsegr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4h33"]
 resource_name = "Solid"
@@ -45,6 +45,7 @@ shadow_mesh = SubResource("ArrayMesh_o80mr")
 size = Vector3(0.105706, 0.699158, 0.0562557)
 
 [node name="knife_paring_knife_001" type="RigidBody3D"]
+metadata/knife = true
 
 [node name="knife paring knife001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.427, 0, 0, 0)

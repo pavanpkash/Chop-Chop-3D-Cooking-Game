@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://brnmnk7u2tcmf"]
+
+[ext_resource type="Script" path="res://scripts/binarea3d.gd" id="1_2arr1"]
+[ext_resource type="FontFile" uid="uid://barbabfpjkm12" path="res://assets/fonts/Holysweet-rgn4K.otf" id="2_uesw0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ryjxg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rj56i"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boyi7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2t73"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8brig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpn06"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wq1ik"]
+size = Vector3(1, 0.360606, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_wuhyp"]
+text = "bin"
+font = ExtResource("2_uesw0")
+font_size = 17
+
+[node name="bin" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0.5, -5)
+physics_material_override = SubResource("PhysicsMaterial_ryjxg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.435)
+mesh = SubResource("BoxMesh_rj56i")
+surface_material_override/0 = SubResource("StandardMaterial3D_boyi7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.565)
+mesh = SubResource("BoxMesh_rj56i")
+surface_material_override/0 = SubResource("StandardMaterial3D_boyi7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.44983, 0, 0.0440934)
+mesh = SubResource("BoxMesh_h2t73")
+surface_material_override/0 = SubResource("StandardMaterial3D_8brig")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.450516, 0, 0.0440934)
+mesh = SubResource("BoxMesh_h2t73")
+surface_material_override/0 = SubResource("StandardMaterial3D_8brig")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.435)
+shape = SubResource("BoxShape3D_dpn06")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.565)
+shape = SubResource("BoxShape3D_dpn06")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.449252, 0, 0.0843688)
+shape = SubResource("BoxShape3D_dpn06")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.454117, 0, 0.0843688)
+shape = SubResource("BoxShape3D_dpn06")
+
+[node name="binarea3d" type="Area3D" parent="."]
+script = ExtResource("1_2arr1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="binarea3d"]
+shape = SubResource("BoxShape3D_wq1ik")
+
+[node name="bin text" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.42413, 0.71536, 0)
+mesh = SubResource("TextMesh_wuhyp")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="binarea3d" to="binarea3d" method="_on_body_entered"]

@@ -40,8 +40,6 @@ func _on_body_entered(body):
 			print("raw")
 			$chickentimer.start()
 			print("Cooking!")
-	elif body.has_meta("whole_meat"):
-		print("test")
 	elif body.has_meta("knife"):
 		print("knife cutting chicken")
 		var cut_chicken = load("res://scenes/2raw_cut_chicken.tscn")
