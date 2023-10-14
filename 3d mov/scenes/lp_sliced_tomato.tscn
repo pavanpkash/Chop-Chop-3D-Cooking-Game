@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfkbrerb42dpm"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/lp_sliced_tomato.gd" id="1_422ye"]
+[ext_resource type="Script" path="res://scripts/unused scripts/lp_sliced_tomato.gd" id="1_422ye"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjmk4"]
 resource_name = "Material.001"

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccdqcx6fve5e6"]
+
+[ext_resource type="AudioStream" uid="uid://crjdwkw0d5skd" path="res://assets/sounds/alex-productions-cocktail.mp3" id="1_dbvnk"]
+
+[node name="background_music" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_dbvnk")
+max_db = 1.0
+autoplay = true

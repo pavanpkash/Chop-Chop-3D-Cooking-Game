@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkocv2026j37l"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="PackedScene" uid="uid://b4vvknwuo7k58" path="res://scenes/raw_cut_chicken.tscn" id="1_0cv0e"]
+[ext_resource type="PackedScene" uid="uid://b4vvknwuo7k58" path="res://scenes/unused scenes/raw_cut_chicken.tscn" id="1_0cv0e"]
 
 [node name="raw_cut_chicken" type="Node3D"]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0m222jmqb3sk"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/top_bun.gd" id="1_iifsn"]
+[ext_resource type="Script" path="res://scripts/unused scripts/top_bun.gd" id="1_iifsn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_maxti"]
 resource_name = "Material.001"

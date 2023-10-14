@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/unused scripts/raw_chicken.gd" id="1_rvvdm"]
+[ext_resource type="PackedScene" uid="uid://8rjc73bgasuv" path="res://assets/foods/raw_chicken.glb" id="2_sowwr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ergsv"]
+size = Vector3(0.504747, 0.373536, 0.577649)
+
+[node name="raw_chicken" type="RigidBody3D"]
+script = ExtResource("1_rvvdm")
+metadata/raw_chicken = true
+metadata/Chicken = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999979, 0, -0.00649258, 0, 1, 0, 0.00649258, 0, 0.999979, 0, 0, 0.0880773)
+shape = SubResource("BoxShape3D_ergsv")
+
+[node name="raw_chicken" parent="." instance=ExtResource("2_sowwr")]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
+
+[node name="chickentimer" type="Timer" parent="."]
+
+[node name="chickenburntimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="chickentimer" to="." method="_on_chickentimer_timeout"]
+[connection signal="timeout" from="chickenburntimer" to="." method="_on_chickenburntimer_timeout"]

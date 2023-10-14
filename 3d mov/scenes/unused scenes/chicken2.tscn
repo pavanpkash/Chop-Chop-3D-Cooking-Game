@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuiwl1hnewx1b"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/chicken.gd" id="1_i66yt"]
-[ext_resource type="PackedScene" uid="uid://bske2gp1368bt" path="res://scenes/raw_cut_chicken.tscn" id="2_uh82r"]
+[ext_resource type="Script" path="res://scripts/unused scripts/chicken.gd" id="1_i66yt"]
+[ext_resource type="PackedScene" uid="uid://b4vvknwuo7k58" path="res://scenes/unused scenes/raw_cut_chicken.tscn" id="2_uh82r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tnxm4"]
 size = Vector3(0.224673, 0.267015, 0.472114)

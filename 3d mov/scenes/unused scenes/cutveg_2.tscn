@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://mjjcpapcy43s"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://scripts/veghalf1.gd" id="1_lni8h"]
-[ext_resource type="Script" path="res://scripts/veghalf2.gd" id="2_fk22b"]
+[ext_resource type="Script" path="res://scripts/unused scripts/veghalf1.gd" id="1_lni8h"]
+[ext_resource type="Script" path="res://scripts/unused scripts/veghalf2.gd" id="2_fk22b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flb45"]
 resource_local_to_scene = true

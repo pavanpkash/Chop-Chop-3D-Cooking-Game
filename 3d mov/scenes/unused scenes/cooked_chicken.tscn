@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds55lfoj683b4"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/cooked_chicken.gd" id="1_ju1mq"]
+[ext_resource type="Script" path="res://scripts/unused scripts/cooked_chicken.gd" id="1_ju1mq"]
 [ext_resource type="PackedScene" uid="uid://oh0xitvrd8pu" path="res://assets/foods/roast_chicken.glb" id="1_kl3wt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ogufo"]

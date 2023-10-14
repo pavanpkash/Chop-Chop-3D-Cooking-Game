@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/unused scripts/vegetable.gd" id="1_ghg8h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fdhv"]
+resource_local_to_scene = true
+albedo_color = Color(0.333333, 1, 0.439216, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mgj42"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3fdhv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsqx3"]
+size = Vector3(1, 0.170243, 1)
+
+[node name="pattytry" type="RigidBody3D" groups=["vegetable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99992, 2.00609, 1)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ghg8h")
+metadata/vegetable = true
+
+[node name="vegmesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.032, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("CylinderMesh_mgj42")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("BoxShape3D_tsqx3")
+
+[node name="burntimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="timeremaining" type="Label" parent="."]
+offset_left = 529.0
+offset_top = 198.0
+offset_right = 622.0
+offset_bottom = 224.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]
+[connection signal="timeout" from="burntimer" to="." method="_on_burntimer_timeout" flags=18]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]

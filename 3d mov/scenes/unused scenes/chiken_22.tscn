@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://kjwmjnf13pnk"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/chiken22.gd" id="1_gmlnc"]
+[ext_resource type="Script" path="res://scripts/unused scripts/chiken22.gd" id="1_gmlnc"]
 [ext_resource type="PackedScene" uid="uid://cjhdu7hgkl3x7" path="res://assets/appliances/chicken_leg_meat_anil.glb" id="2_bjqsq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yb5fm"]

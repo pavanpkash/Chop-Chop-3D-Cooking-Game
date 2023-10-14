@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://h6oybtpskvh1"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/bottom_bun.gd" id="1_4bjne"]
+[ext_resource type="Script" path="res://scripts/unused scripts/bottom_bun.gd" id="1_4bjne"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnelw"]
 resource_local_to_scene = true

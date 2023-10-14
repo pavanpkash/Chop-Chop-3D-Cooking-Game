@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccrybbpdbimyg"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/vegetable.gd" id="1_say7m"]
+[ext_resource type="Script" path="res://scripts/unused scripts/vegetable.gd" id="1_say7m"]
 [ext_resource type="Script" path="res://scripts/vegmesh.gd" id="2_i4reh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yb5fm"]

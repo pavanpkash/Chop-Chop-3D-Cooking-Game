@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://btuu8up85ou38"]
+
+[ext_resource type="PackedScene" uid="uid://bwofivcvw5kim" path="res://assets/foods/day11_meat.glb" id="1_4gg4o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1iql3"]
+size = Vector3(0.347417, 0.0743568, 0.373365)
+
+[node name="raw_meat" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.185, 3)
+metadata/meat = true
+
+[node name="day11_meat" parent="." instance=ExtResource("1_4gg4o")]
+transform = Transform3D(0.036, 0, 0, 0, 0.036, 0, 0, 0, 0.021, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1iql3")

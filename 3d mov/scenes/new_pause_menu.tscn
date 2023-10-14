@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu4d0tiud4jib"]
+[gd_scene load_steps=6 format=3 uid="uid://cu4d0tiud4jib"]
 
 [ext_resource type="Script" path="res://scripts/NewPauseMenu.gd" id="1_p4nky"]
 [ext_resource type="FontFile" uid="uid://barbabfpjkm12" path="res://assets/fonts/Holysweet-rgn4K.otf" id="2_p02i2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3ps4"]
-bg_color = Color(0.909804, 0.682353, 0.815686, 1)
+bg_color = Color(0, 0.694118, 0.890196, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -13,6 +13,15 @@ corner_radius_bottom_left = 25
 [sub_resource type="LabelSettings" id="LabelSettings_1ce4r"]
 font = ExtResource("2_p02i2")
 font_size = 103
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw2mr"]
+bg_color = Color(0.0588235, 0.337255, 0.415686, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [node name="NewPauseMenu" type="Control"]
 layout_mode = 3
@@ -75,6 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_p02i2")
 theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_vw2mr")
 text = "resume
 "
 
@@ -93,25 +103,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_p02i2")
 theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_vw2mr")
 text = "RETRY"
-
-[node name="QuitButton" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = 146.0
-offset_right = 85.0
-offset_bottom = 206.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_p02i2")
-theme_override_font_sizes/font_size = 45
-text = "Quit
-"
 
 [node name="how_to_play" type="Button" parent="Panel"]
 layout_mode = 1
@@ -128,10 +121,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_p02i2")
 theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_vw2mr")
 text = "How to play"
+
+[node name="QuitButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 146.0
+offset_right = 85.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_p02i2")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_vw2mr")
+text = "Quit
+"
 
 [connection signal="pressed" from="Panel/Resume2" to="." method="_on_resume_2_pressed"]
 [connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed" flags=18]
-[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_restart_button_pressed" flags=18]
-[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Panel/how_to_play" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_restart_button_pressed" flags=18]

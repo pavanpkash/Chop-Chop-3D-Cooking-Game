@@ -15,12 +15,9 @@ func _get_prompt():
 			key_name = OS.get_keycode_string(action.keycode)
 	return prompt_message + "\n[" + key_name + "]"
 
+#when red button is pressed, game over screen is shown
 func interact(body):
-	#print to console for debugging
 	print("Serving!")
 	emit_signal("interacted", body)
 	emit_signal("end_game")
-#	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
 	$"../GameOverScreen".visible = true
-#	get_tree().quit()
-#change_scene_to_file("res://scenes/world.tscn")

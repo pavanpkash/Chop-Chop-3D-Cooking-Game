@@ -1,23 +1,35 @@
 extends Area3D
 
-var test = false
+func _static(body, item):
+	add_sibling(item)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+var patty_binned = false
+var meat_binned = false
+var cheese_binned = false
+var bun_binned = false
 
 func _on_body_entered(body):
-	if test == false:
+	if patty_binned == false:
 		if body.has_meta("raw_patty"):
 			print("Binned")
 			var item = load("res://scenes/lp_raw_meat.tscn").instantiate()
 			add_sibling(item)
-#			body.queue_free()
-#			item.position = Vector3(0,5,0)
-			test = true
-		
+			patty_binned = true
+	if meat_binned == false:
+		if body.has_meta("meat"):
+			print("binning meat")
+			var item = load("res://scenes/unused scenes/raw_meat.tscn").instantiate()
+			add_sibling(item)
+			meat_binned = true
+	if cheese_binned == false:
+		if body.has_meta("cheese"):
+			print("binning cheese")
+			var item = load("res://scenes/lp_whole_cheese.tscn").instantiate()
+			_static(body, item)
+			cheese_binned = true
+	if bun_binned == false:
+		if body.has_meta("bun"):
+			print("bun gone")
+			var item = load("res://scenes/whole_bun.tscn").instantiate()
+			_static(body, item)
+			bun_binned = true
